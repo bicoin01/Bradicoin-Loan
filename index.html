@@ -3,19 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bradi · Futurist Dashboard</title>
+  <title>Bradi Loan · Bradicoin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Orbitron', sans-serif;
       background: #0a0015;
       min-height: 100vh;
       display: flex;
@@ -24,20 +20,18 @@
       background: radial-gradient(circle at 20% 30%, #0b0020, #03000a);
       padding: 1rem;
     }
-    /* ----- MAIN WRAPPER (same as before) ----- */
     .loan-wrapper {
       max-width: 1320px;
       width: 100%;
-      background: rgba(8, 0, 25, 0.7);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(8, 0, 25, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-radius: 3.5rem 3.5rem 2.5rem 2.5rem;
       padding: 2.2rem 2.8rem 1.8rem;
-      box-shadow: 0 0 60px rgba(0, 255, 255, 0.25), 0 0 120px rgba(138, 43, 226, 0.3);
-      border: 1px solid rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 80px rgba(0, 255, 255, 0.2), 0 0 160px rgba(138, 43, 226, 0.25);
+      border: 1px solid rgba(0, 255, 255, 0.15);
       position: relative;
       overflow: hidden;
-      transition: all 0.3s;
     }
     .loan-wrapper::before {
       content: '';
@@ -46,14 +40,11 @@
       left: -20%;
       width: 160%;
       height: 160%;
-      background: radial-gradient(circle at 70% 30%, rgba(0, 255, 255, 0.03), transparent 70%);
+      background: radial-gradient(circle at 70% 30%, rgba(0, 255, 255, 0.04), transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
-    .loan-wrapper > * {
-      position: relative;
-      z-index: 2;
-    }
+    .loan-wrapper > * { position: relative; z-index: 2; }
     /* TOP BAR */
     .top-bar {
       display: flex;
@@ -61,7 +52,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 1.2rem 0.8rem;
-      border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+      border-bottom: 1px solid rgba(0, 255, 255, 0.12);
       padding-bottom: 1.3rem;
       margin-bottom: 2rem;
     }
@@ -74,45 +65,32 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      text-shadow: 0 0 25px rgba(0, 255, 255, 0.5), 0 0 60px #8b5cf6;
+      text-shadow: 0 0 30px rgba(0, 255, 255, 0.4), 0 0 80px #8b5cf6;
     }
-    .brand-orbit i {
-      margin-right: 10px;
-      color: #22d3ee;
-      text-shadow: 0 0 20px cyan;
-    }
-    .auth-translate-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1rem 1.5rem;
-    }
-    .auth-buttons {
-      display: flex;
-      gap: 0.8rem;
-    }
+    .brand-orbit i { margin-right: 10px; color: #22d3ee; text-shadow: 0 0 30px cyan; }
+    .auth-translate-wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; }
+    .auth-buttons { display: flex; gap: 0.8rem; }
     .auth-btn {
+      font-family: 'Orbitron', sans-serif;
       background: transparent;
       border: 1.5px solid rgba(0, 255, 255, 0.5);
       padding: 0.5rem 1.6rem;
       border-radius: 60px;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.75rem;
       color: #e0f2fe;
       transition: all 0.25s;
       cursor: pointer;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
       backdrop-filter: blur(4px);
       background: rgba(0, 255, 255, 0.03);
       letter-spacing: 0.5px;
     }
-    .auth-btn i {
-      margin-right: 8px;
-    }
+    .auth-btn i { margin-right: 8px; }
     .auth-btn:hover {
       background: rgba(0, 255, 255, 0.15);
       border-color: #a78bfa;
-      box-shadow: 0 0 35px #a78bfa;
+      box-shadow: 0 0 40px #a78bfa;
       color: white;
       transform: scale(1.03);
     }
@@ -123,7 +101,7 @@
     }
     .auth-btn.signup:hover {
       background: linear-gradient(145deg, #7c3aed, #4c1d95);
-      box-shadow: 0 0 40px #7c3aed;
+      box-shadow: 0 0 50px #7c3aed;
     }
     .lang-selector {
       display: flex;
@@ -132,262 +110,538 @@
       background: rgba(0, 0, 0, 0.4);
       border-radius: 60px;
       padding: 0.25rem 0.9rem 0.25rem 1.2rem;
-      border: 1px solid rgba(0, 255, 255, 0.25);
+      border: 1px solid rgba(0, 255, 255, 0.2);
       backdrop-filter: blur(4px);
     }
-    .lang-selector i {
-      color: #67e8f9;
-      font-size: 1rem;
-    }
+    .lang-selector i { color: #67e8f9; font-size: 1rem; }
     .lang-selector select {
+      font-family: 'Orbitron', sans-serif;
       background: transparent;
       border: none;
       color: #d8b4fe;
       font-weight: 500;
-      font-size: 0.9rem;
+      font-size: 0.7rem;
       padding: 0.4rem 0.1rem;
       outline: none;
       cursor: pointer;
-      font-family: 'Inter', sans-serif;
     }
-    .lang-selector select option {
-      background: #1e002b;
-      color: #e0e7ff;
+    .lang-selector select option { background: #1e002b; color: #e0e7ff; }
+    /* TYPOGRAPHY */
+    .orbitron { font-family: 'Orbitron', sans-serif; }
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #c4b5fd;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 0 40px rgba(138, 43, 226, 0.25);
+      letter-spacing: 0.02em;
     }
-    /* ----- DASHBOARD (hidden by default) ----- */
-    #dashboard {
-      display: none;
-      margin-top: 1rem;
+    .section-title i { color: #2dd4bf; margin-right: 12px; }
+    .section-sub {
+      font-family: 'Orbitron', sans-serif;
+      color: #b9c8e6;
+      font-size: 0.85rem;
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+      letter-spacing: 0.01em;
     }
-    #dashboard.active {
-      display: block;
+    .section-sub strong { color: #fcd34d; font-weight: 700; }
+    .highlight-box-glow {
+      background: linear-gradient(145deg, rgba(88, 28, 135, 0.35), rgba(0, 0, 0, 0.3));
+      border-radius: 2rem;
+      padding: 2rem 2.5rem;
+      border: 1px solid rgba(0, 255, 255, 0.12);
+      box-shadow: 0 0 60px rgba(138, 43, 226, 0.12);
+      margin: 1.5rem 0;
     }
-    .dash-grid {
+    .highlight-box-glow h3 { font-family: 'Orbitron', sans-serif; color: #a5f3fc; margin-bottom: 0.8rem; font-size: 1.2rem; }
+    .highlight-box-glow p { font-family: 'Orbitron', sans-serif; color: #cbd5e1; line-height: 1.7; font-size: 0.8rem; }
+    .grid-2col {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
+      margin: 1.5rem 0;
+    }
+    .card-neon {
+      background: rgba(0, 10, 35, 0.5);
+      border-radius: 2rem;
+      padding: 1.8rem;
+      border: 1px solid rgba(0, 255, 255, 0.06);
+      transition: 0.3s;
+      backdrop-filter: blur(6px);
+    }
+    .card-neon:hover {
+      border-color: #a78bfa;
+      box-shadow: 0 0 50px rgba(138, 43, 226, 0.15);
+      transform: translateY(-2px);
+    }
+    .card-neon h4 { font-family: 'Orbitron', sans-serif; color: #bae6fd; font-size: 0.95rem; margin-bottom: 0.6rem; letter-spacing: 0.02em; }
+    .card-neon p { font-family: 'Orbitron', sans-serif; color: #cbd5e1; line-height: 1.7; font-size: 0.75rem; font-weight: 300; }
+    .card-neon i { color: #2dd4bf; margin-right: 8px; }
+    .step-list {
+      list-style: none;
+      counter-reset: step;
+    }
+    .step-list li {
+      font-family: 'Orbitron', sans-serif;
+      counter-increment: step;
+      color: #cbd5e1;
+      padding: 1rem 0 1rem 3.5rem;
+      position: relative;
+      border-bottom: 1px solid rgba(0,255,255,0.04);
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+    .step-list li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 1rem;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #a78bfa;
+      background: rgba(0, 255, 255, 0.06);
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(0, 255, 255, 0.12);
+    }
+    .step-list li strong { font-family: 'Orbitron', sans-serif; color: #bae6fd; display: block; font-size: 0.85rem; margin-bottom: 0.2rem; }
+    .step-list li span { font-family: 'Orbitron', sans-serif; font-weight: 300; font-size: 0.75rem; }
+    .table-score {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .table-score th {
+      font-family: 'Orbitron', sans-serif;
+      color: #a5f3fc;
+      padding: 0.8rem;
+      border-bottom: 2px solid rgba(0, 255, 255, 0.12);
+      text-align: left;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+    }
+    .table-score td {
+      font-family: 'Orbitron', sans-serif;
+      padding: 0.7rem 0.8rem;
+      border-bottom: 1px solid rgba(0, 255, 255, 0.04);
+      font-size: 0.7rem;
+      color: #cbd5e1;
+      font-weight: 300;
+    }
+    .table-score tr:hover { background: rgba(0, 255, 255, 0.03); }
+    .badge-level { padding: 0.2rem 1rem; border-radius: 40px; font-size: 0.6rem; font-weight: 700; font-family: 'Orbitron', sans-serif; }
+    .badge-beginner { background: #1e4b3a; color: #6ee7b7; }
+    .badge-bronze { background: #4b3a1e; color: #fcd34d; }
+    .badge-silver { background: #2d3748; color: #e2e8f0; }
+    .badge-gold { background: #4b3a1e; color: #fbbf24; }
+    .badge-diamond { background: #1e1b4b; color: #a78bfa; }
+    .faq-item {
+      border-bottom: 1px solid rgba(0, 255, 255, 0.05);
+      padding: 1rem 0;
+    }
+    .faq-item .q {
+      font-family: 'Orbitron', sans-serif;
+      color: #bae6fd;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+    }
+    .faq-item .q i { color: #2dd4bf; transition: 0.3s; }
+    .faq-item .a {
+      font-family: 'Orbitron', sans-serif;
+      color: #cbd5e1;
+      padding-top: 0.5rem;
+      display: none;
+      line-height: 1.7;
+      font-size: 0.75rem;
+      font-weight: 300;
+    }
+    .faq-item.active .a { display: block; }
+    .faq-item.active .q i { transform: rotate(180deg); }
+    .btn-cta {
+      display: inline-block;
+      padding: 1rem 3rem;
+      border-radius: 60px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed, #a855f7);
+      color: white;
+      font-weight: 700;
+      font-size: 0.9rem;
+      font-family: 'Orbitron', sans-serif;
+      text-decoration: none;
+      box-shadow: 0 0 60px rgba(37, 99, 235, 0.25);
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+    }
+    .btn-cta:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 100px #7c3aed;
+    }
+    .testimonial {
+      background: rgba(0, 10, 35, 0.3);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      border-left: 4px solid #a78bfa;
+      margin: 1rem 0;
+    }
+    .testimonial p { font-family: 'Orbitron', sans-serif; color: #cbd5e1; font-style: italic; line-height: 1.7; font-size: 0.75rem; font-weight: 300; }
+    .testimonial .author { font-family: 'Orbitron', sans-serif; color: #a5f3fc; font-weight: 600; margin-top: 0.5rem; font-size: 0.7rem; }
+    .process-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: center;
+      margin: 1.5rem 0;
+    }
+    .process-step {
+      background: rgba(0, 10, 35, 0.4);
+      border-radius: 1.5rem;
+      padding: 0.8rem 1.2rem;
+      text-align: center;
+      min-width: 90px;
+      border: 1px solid rgba(0, 255, 255, 0.06);
+      flex: 1;
+    }
+    .process-step .num { font-family: 'Orbitron', sans-serif; color: #a78bfa; font-size: 1.2rem; font-weight: 700; }
+    .process-step .label { font-family: 'Orbitron', sans-serif; color: #b9c8e6; font-size: 0.55rem; margin-top: 0.2rem; letter-spacing: 0.04em; }
+    .welcome-title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 2.4rem;
+      line-height: 1.3;
+      background: linear-gradient(135deg, #bae6fd, #c084fc, #f0abfc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 60px #8b5cf6, 0 0 120px #2563eb;
+      letter-spacing: 0.02em;
+    }
+    .welcome-title span {
+      background: linear-gradient(135deg, #fcd34d, #fb923c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 50px #f59e0b;
+    }
+    .welcome-sub {
+      font-family: 'Orbitron', sans-serif;
+      color: #c4b5fd;
+      font-size: 0.85rem;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      margin-top: 0.8rem;
+      border-left: 5px solid #a78bfa;
+      padding-left: 1.4rem;
+      background: linear-gradient(90deg, rgba(0,255,255,0.04), transparent);
+      line-height: 1.8;
+    }
+    .welcome-sub i { color: #2dd4bf; margin-right: 8px; }
+    @media (max-width: 900px) {
+      .grid-2col { grid-template-columns: 1fr; }
+      .top-bar { flex-direction: column; align-items: stretch; }
+      .auth-translate-wrap { justify-content: space-between; flex-wrap: wrap; }
+      .loan-wrapper { padding: 1.6rem; }
+      .section-title { font-size: 1.4rem; }
+      .welcome-title { font-size: 1.8rem; }
+    }
+    @media (max-width: 550px) {
+      .auth-buttons { flex-wrap: wrap; }
+      .brand-orbit { font-size: 1.6rem; }
+    }
+    /* DASHBOARD - ORGANIZED */
+    #dashboard { display: none; margin-top: 1rem; }
+    #dashboard.active { display: block; }
+    #mainContent.hidden { display: none; }
+    .dash-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
     }
     .dash-card {
       background: rgba(0, 10, 35, 0.55);
       backdrop-filter: blur(10px);
       border-radius: 2rem;
-      padding: 1.8rem 2rem;
-      border: 1px solid rgba(0, 255, 255, 0.15);
-      box-shadow: 0 0 40px rgba(100, 0, 255, 0.15);
+      padding: 1.5rem 1.8rem;
+      border: 1px solid rgba(0, 255, 255, 0.12);
+      box-shadow: 0 0 50px rgba(100, 0, 255, 0.1);
       transition: 0.2s;
     }
-    .dash-card:hover {
-      border-color: #a78bfa;
-      box-shadow: 0 0 60px rgba(138, 43, 226, 0.25);
-    }
+    .dash-card:hover { border-color: #a78bfa; box-shadow: 0 0 70px rgba(138, 43, 226, 0.2); }
     .dash-card h3 {
       font-family: 'Orbitron', sans-serif;
       font-weight: 700;
       color: #c4b5fd;
-      font-size: 1.3rem;
-      margin-bottom: 1.2rem;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      border-bottom: 1px solid rgba(0,255,255,0.1);
-      padding-bottom: 0.7rem;
+      border-bottom: 1px solid rgba(0,255,255,0.08);
+      padding-bottom: 0.6rem;
     }
-    .dash-card h3 i {
-      color: #2dd4bf;
-    }
-    .dash-card .input-group {
-      margin-bottom: 1rem;
-    }
+    .dash-card h3 i { color: #2dd4bf; }
+    .dash-card .input-group { margin-bottom: 0.8rem; }
     .dash-card .input-group label {
+      font-family: 'Orbitron', sans-serif;
       color: #b9d0f0;
       font-weight: 500;
-      font-size: 0.8rem;
+      font-size: 0.55rem;
       display: block;
       margin-bottom: 0.2rem;
+      letter-spacing: 0.04em;
     }
-    .dash-card .input-group input,
-    .dash-card .input-group select,
-    .dash-card .input-group textarea {
+    .dash-card .input-group input, .dash-card .input-group select, .dash-card .input-group textarea {
+      font-family: 'Orbitron', sans-serif;
       width: 100%;
-      padding: 0.6rem 1rem;
+      padding: 0.5rem 0.8rem;
       background: rgba(0, 0, 0, 0.45);
-      border: 1.5px solid rgba(0, 255, 255, 0.15);
+      border: 1.5px solid rgba(0, 255, 255, 0.12);
       border-radius: 40px;
       color: #f0f0ff;
-      font-size: 0.9rem;
+      font-size: 0.6rem;
       outline: none;
       transition: 0.25s;
-      font-family: 'Inter', sans-serif;
     }
-    .dash-card .input-group textarea {
-      border-radius: 20px;
-      resize: vertical;
-      min-height: 60px;
-    }
-    .dash-card .input-group input:focus,
-    .dash-card .input-group textarea:focus {
+    .dash-card .input-group textarea { border-radius: 20px; resize: vertical; min-height: 50px; }
+    .dash-card .input-group input:focus, .dash-card .input-group textarea:focus {
       border-color: #a78bfa;
-      box-shadow: 0 0 25px #6d28d9;
+      box-shadow: 0 0 30px #6d28d9;
     }
     .dash-btn {
+      font-family: 'Orbitron', sans-serif;
       background: linear-gradient(135deg, #2563eb, #7c3aed);
       border: none;
-      padding: 0.6rem 1.8rem;
+      padding: 0.5rem 1.2rem;
       border-radius: 60px;
       color: white;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.6rem;
       cursor: pointer;
       transition: 0.2s;
-      box-shadow: 0 0 30px rgba(37, 99, 235, 0.2);
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 0.5px;
+      box-shadow: 0 0 30px rgba(37, 99, 235, 0.15);
+      letter-spacing: 0.04em;
     }
-    .dash-btn:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 50px #7c3aed;
-    }
-    .dash-btn.outline {
-      background: transparent;
-      border: 1.5px solid rgba(0, 255, 255, 0.4);
-      box-shadow: none;
-    }
-    .dash-btn.outline:hover {
-      background: rgba(0, 255, 255, 0.05);
-      border-color: #a78bfa;
-    }
-    .dash-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 0.8rem;
-    }
-    .kyc-upload {
-      border: 2px dashed rgba(0, 255, 255, 0.2);
-      border-radius: 1.5rem;
-      padding: 1.2rem;
-      text-align: center;
-      color: #8a9bb8;
-      transition: 0.2s;
-      cursor: pointer;
-    }
-    .kyc-upload:hover {
-      border-color: #a78bfa;
-      background: rgba(0, 255, 255, 0.03);
-    }
-    .kyc-upload i {
-      font-size: 2rem;
-      color: #67e8f9;
-      margin-bottom: 0.4rem;
-    }
-    .logout-area {
-      margin-top: 1.8rem;
-      display: flex;
-      justify-content: flex-end;
-      border-top: 1px solid rgba(0,255,255,0.08);
-      padding-top: 1.2rem;
-    }
+    .dash-btn:hover { transform: scale(1.03); box-shadow: 0 0 60px #7c3aed; }
+    .dash-btn.green { background: linear-gradient(135deg, #059669, #10b981); box-shadow: 0 0 30px rgba(16, 185, 129, 0.2); }
+    .dash-btn.green:hover { box-shadow: 0 0 60px #10b981; }
+    .dash-btn.pink { background: linear-gradient(135deg, #db2777, #ec4899); box-shadow: 0 0 30px rgba(236, 72, 153, 0.2); }
+    .dash-btn.pink:hover { box-shadow: 0 0 60px #ec4899; }
+    .dash-btn.cyan { background: linear-gradient(135deg, #0891b2, #06b6d4); box-shadow: 0 0 30px rgba(6, 182, 212, 0.2); }
+    .dash-btn.cyan:hover { box-shadow: 0 0 60px #06b6d4; }
+    .dash-btn.amber { background: linear-gradient(135deg, #d97706, #f59e0b); box-shadow: 0 0 30px rgba(245, 158, 11, 0.2); }
+    .dash-btn.amber:hover { box-shadow: 0 0 60px #f59e0b; }
+    .dash-btn.purple { background: linear-gradient(135deg, #7c3aed, #8b5cf6); box-shadow: 0 0 30px rgba(124, 58, 237, 0.2); }
+    .dash-btn.purple:hover { box-shadow: 0 0 60px #8b5cf6; }
+    .dash-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+    .logout-area { margin-top: 1.8rem; display: flex; justify-content: flex-end; border-top: 1px solid rgba(0,255,255,0.06); padding-top: 1.2rem; }
     .logout-btn {
-      background: rgba(255, 0, 100, 0.15);
-      border: 1px solid rgba(255, 0, 100, 0.3);
+      font-family: 'Orbitron', sans-serif;
+      background: rgba(255, 0, 100, 0.12);
+      border: 1px solid rgba(255, 0, 100, 0.25);
       color: #f472b6;
       padding: 0.5rem 2rem;
       border-radius: 60px;
       font-weight: 600;
+      font-size: 0.7rem;
       cursor: pointer;
       transition: 0.2s;
+      letter-spacing: 0.04em;
+    }
+    .logout-btn:hover { background: rgba(255, 0, 100, 0.2); box-shadow: 0 0 50px rgba(255, 0, 100, 0.15); transform: scale(1.02); }
+    .kyc-upload {
+      border: 2px dashed rgba(0, 255, 255, 0.15);
+      border-radius: 1.5rem;
+      padding: 1rem;
+      text-align: center;
+      color: #8a9bb8;
+      transition: 0.2s;
+      cursor: pointer;
       font-family: 'Orbitron', sans-serif;
-      letter-spacing: 0.5px;
+      font-size: 0.6rem;
     }
-    .logout-btn:hover {
-      background: rgba(255, 0, 100, 0.25);
-      box-shadow: 0 0 40px rgba(255, 0, 100, 0.2);
-      transform: scale(1.02);
+    .kyc-upload:hover { border-color: #a78bfa; background: rgba(0, 255, 255, 0.03); }
+    .kyc-upload i { font-size: 1.5rem; color: #67e8f9; margin-bottom: 0.3rem; }
+    .address-display {
+      background: rgba(0,0,0,0.3);
+      border-radius: 1rem;
+      padding: 0.6rem;
+      margin: 0.3rem 0 0.8rem;
+      font-size: 0.55rem;
+      color: #a5b4fc;
+      word-break: break-all;
+      border: 1px solid rgba(0,255,255,0.06);
+      font-family: 'Orbitron', sans-serif;
     }
-    /* hide main content when dashboard active */
-    #mainContent.hidden {
-      display: none;
-    }
-    /* modal overlay (logout confirm) */
+    .dash-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.3rem; }
+    .dash-row .dash-btn { flex: 1; text-align: center; }
+    /* MODALS */
     .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
       display: none;
       align-items: center;
       justify-content: center;
       z-index: 9999;
     }
-    .modal-overlay.active {
-      display: flex;
-    }
+    .modal-overlay.active { display: flex; }
     .modal-box {
       background: rgba(10, 0, 30, 0.95);
-      border: 1px solid rgba(0, 255, 255, 0.3);
+      border: 1px solid rgba(0, 255, 255, 0.2);
       border-radius: 2.5rem;
       padding: 2.5rem 2.8rem 2.8rem;
-      max-width: 420px;
+      max-width: 440px;
       width: 90%;
-      box-shadow: 0 0 80px rgba(138, 43, 226, 0.4);
+      box-shadow: 0 0 100px rgba(138, 43, 226, 0.3);
       text-align: center;
+      position: relative;
     }
-    .modal-box h2 {
-      font-family: 'Orbitron', sans-serif;
-      color: #f0f4ff;
-      margin-bottom: 0.8rem;
-    }
-    .modal-box p {
-      color: #b9c8e6;
-      margin-bottom: 2rem;
-    }
-    .modal-box .modal-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-    }
+    .modal-box h2 { font-family: 'Orbitron', sans-serif; color: #f0f4ff; margin-bottom: 0.8rem; font-size: 1.2rem; letter-spacing: 0.04em; }
+    .modal-box p { font-family: 'Orbitron', sans-serif; color: #b9c8e6; margin-bottom: 1.5rem; font-size: 0.75rem; }
+    .modal-box .modal-actions { display: flex; gap: 1rem; justify-content: center; }
     .modal-box .modal-actions button {
+      font-family: 'Orbitron', sans-serif;
       padding: 0.6rem 2.2rem;
       border-radius: 60px;
       border: none;
       font-weight: 700;
+      font-size: 0.7rem;
       cursor: pointer;
-      font-family: 'Orbitron', sans-serif;
       transition: 0.2s;
+      letter-spacing: 0.04em;
     }
     .modal-box .modal-actions .btn-yes {
       background: linear-gradient(135deg, #2563eb, #7c3aed);
       color: white;
-      box-shadow: 0 0 30px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 0 30px rgba(37, 99, 235, 0.2);
     }
-    .modal-box .modal-actions .btn-yes:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 50px #7c3aed;
-    }
+    .modal-box .modal-actions .btn-yes:hover { transform: scale(1.05); box-shadow: 0 0 60px #7c3aed; }
     .modal-box .modal-actions .btn-no {
       background: transparent;
-      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border: 1.5px solid rgba(255, 255, 255, 0.15);
       color: #b9c8e6;
     }
-    .modal-box .modal-actions .btn-no:hover {
-      border-color: #a78bfa;
-      color: white;
+    .modal-box .modal-actions .btn-no:hover { border-color: #a78bfa; color: white; }
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 1.8rem;
+      color: #a5b4fc;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: 0.2s;
+      font-family: 'Orbitron', sans-serif;
     }
-    @media (max-width: 900px) {
+    .close-modal:hover { color: #f0f4ff; transform: rotate(90deg); text-shadow: 0 0 40px #a78bfa; }
+    .modal-btn {
+      font-family: 'Orbitron', sans-serif;
+      width: 100%;
+      padding: 0.9rem;
+      border: none;
+      border-radius: 60px;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: 0 0 40px rgba(37, 99, 235, 0.2);
+      transition: 0.2s;
+      letter-spacing: 0.04em;
+    }
+    .modal-btn:hover { transform: scale(1.02); box-shadow: 0 0 80px #7c3aed; }
+    .modal-switch {
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      margin-top: 1.2rem;
+      color: #8a9bb8;
+      font-size: 0.7rem;
+    }
+    .modal-switch span {
+      color: #a78bfa;
+      cursor: pointer;
+      font-weight: 600;
+      border-bottom: 1px dashed #a78bfa;
+    }
+    .modal-switch span:hover { color: #c4b5fd; text-shadow: 0 0 30px #a78bfa; }
+    .modal-box .input-group { margin-bottom: 1.2rem; text-align: left; }
+    .modal-box .input-group label { font-family: 'Orbitron', sans-serif; color: #b9d0f0; font-weight: 500; font-size: 0.6rem; display: block; margin-bottom: 0.2rem; letter-spacing: 0.04em; }
+    .modal-box .input-group input {
+      font-family: 'Orbitron', sans-serif;
+      width: 100%;
+      padding: 0.6rem 1rem;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1.5px solid rgba(0, 255, 255, 0.12);
+      border-radius: 40px;
+      color: #f0f0ff;
+      font-size: 0.7rem;
+      outline: none;
+      transition: 0.25s;
+    }
+    .modal-box .input-group input:focus { border-color: #a78bfa; box-shadow: 0 0 30px #6d28d9; }
+    /* FOOTER */
+    .site-footer {
+      max-width: 1320px;
+      width: 100%;
+      margin: 1.8rem auto 1.2rem;
+      padding: 1.2rem 1.5rem 0.8rem;
+      border-top: 1px solid rgba(0, 255, 255, 0.06);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem 2rem;
+      color: #8a9bb8;
+      font-size: 0.7rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .footer-links a {
+      font-family: 'Orbitron', sans-serif;
+      color: #b9c8e6;
+      text-decoration: none;
+      transition: 0.2s;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.65rem;
+      letter-spacing: 0.04em;
+    }
+    .footer-links a i { color: #67e8f9; font-size: 0.7rem; }
+    .footer-links a:hover { color: #f0f4ff; border-bottom-color: #a78bfa; text-shadow: 0 0 30px #a78bfa; }
+    .footer-copy { font-family: 'Orbitron', sans-serif; font-size: 0.6rem; color: #4b6080; letter-spacing: 0.04em; }
+    .footer-copy i { color: #2dd4bf; margin: 0 4px; }
+    @media (max-width: 1000px) {
+      .dash-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 650px) {
       .dash-grid { grid-template-columns: 1fr; }
-      .top-bar { flex-direction: column; align-items: stretch; }
-      .auth-translate-wrap { justify-content: space-between; flex-wrap: wrap; }
-      .loan-wrapper { padding: 1.6rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- MAIN WRAPPER -->
-<div class="loan-wrapper" id="appWrapper">
+<div class="loan-wrapper">
   <!-- TOP BAR -->
   <div class="top-bar">
     <div class="brand-orbit"><i class="fas fa-coins"></i> BRADI·LOAN</div>
@@ -408,47 +662,179 @@
     </div>
   </div>
 
-  <!-- MAIN CONTENT (visible before login) -->
+  <!-- MAIN CONTENT -->
   <div id="mainContent">
-    <div class="welcome-section">
-      <div class="welcome-title"><i class="fas fa-hand-holding-usd" style="color: #67e8f9; margin-right: 12px;"></i> Welcome to <span>Bradicoin</span> Loan</div>
-      <div class="welcome-sub"><i class="fas fa-robot"></i> Future‑ready lending · Borrow Bradicoin (BRC) for diverse use cases</div>
-    </div>
-    <div class="loan-grid" style="display:grid; grid-template-columns:1.2fr 0.9fr; gap:2.5rem; margin-top:1.5rem;">
-      <div class="info-panel" style="background:rgba(0,10,30,0.45); border-radius:2.2rem; padding:2rem; border:1px solid rgba(0,255,255,0.12);">
-        <h3 style="font-family:'Orbitron',sans-serif; color:#a5f3fc; font-size:1.5rem; margin-bottom:1.5rem;"><i class="fas fa-rocket" style="color:#2dd4bf;"></i> Bradicoin loan</h3>
-        <div class="info-item" style="display:flex; gap:1.2rem; margin-bottom:1.5rem; color:#ddd6fe;"><i class="fas fa-bolt" style="font-size:1.6rem; color:#2dd4bf;"></i><div><strong style="color:#bae6fd;">Flash loans · 0% collateral</strong><p style="color:#cbd5e1;">Instant BRC liquidity for trading, development, or personal projects. Repay within 24h.</p></div></div>
-        <div class="info-item" style="display:flex; gap:1.2rem; margin-bottom:1.5rem; color:#ddd6fe;"><i class="fas fa-chart-line" style="font-size:1.6rem; color:#2dd4bf;"></i><div><strong style="color:#bae6fd;">Variable APR · stake & earn</strong><p style="color:#cbd5e1;">Rates from 2.5% to 12% depending on loan term and BRC staking history.</p></div></div>
-        <div class="info-item" style="display:flex; gap:1.2rem; margin-bottom:1.5rem; color:#ddd6fe;"><i class="fas fa-shield-alt" style="font-size:1.6rem; color:#2dd4bf;"></i><div><strong style="color:#bae6fd;">Secure & transparent</strong><p style="color:#cbd5e1;">All loans recorded on Bradicoin blockchain. No hidden fees. <span class="badge-coin" style="background:rgba(0,255,255,0.08); border-radius:60px; padding:0.2rem 1.4rem; border:1px solid #22d3ee; color:#7dd3fc; font-family:'Orbitron',sans-serif;">BRC‑20</span></p></div></div>
-        <div style="margin-top:1.2rem; font-size:0.9rem; color:#9aa9c9;"><i class="fas fa-link"></i> Powered by <strong style="color:#7dd3fc;">Bradicoin</strong> <a href="https://www.bradicoin.com" target="_blank" style="color:#a78bfa; text-decoration:none; border-bottom:1px dotted #a78bfa;">www.bradicoin.com</a></div>
+    <!-- HERO -->
+    <div class="welcome-section" style="margin-bottom: 2.5rem;">
+      <div class="welcome-title">
+        <i class="fas fa-hand-holding-usd" style="color: #67e8f9; margin-right: 12px;"></i> 
+        Achieve Your Projects with a <span>Bradicoin Loan</span>.<br>
+        <span style="font-size: 1.4rem; background: none; color: #a5f3fc; text-shadow: 0 0 40px rgba(0,255,255,0.15);">You Don't Need to Have Bradicoin to Get Started.</span>
       </div>
-      <div class="loan-form" style="background:rgba(0,10,35,0.55); border-radius:2.5rem; padding:2rem 2.2rem 2.4rem; border:1px solid rgba(0,255,255,0.2);">
-        <h3 style="font-family:'Orbitron',sans-serif; color:#c4b5fd; font-size:1.4rem; margin-bottom:2rem;"><i class="fas fa-pen-fancy" style="color:#2dd4bf;"></i> Request loan</h3>
-        <form onsubmit="event.preventDefault(); alert('🚀 Loan request submitted! (simulated)');">
-          <div class="input-group" style="margin-bottom:1.4rem;"><label style="color:#b9d0f0; font-weight:500; font-size:0.9rem;"><i class="fas fa-user-astronaut"></i> Full name</label><input type="text" placeholder="e.g. Satoshi Nakamoto" value="Alex Rivera" style="width:100%; padding:0.8rem 1.2rem; background:rgba(0,0,0,0.45); border:1.5px solid rgba(0,255,255,0.15); border-radius:60px; color:#f0f0ff; font-size:0.95rem; outline:none;" /></div>
-          <div class="input-group" style="margin-bottom:1.4rem;"><label style="color:#b9d0f0; font-weight:500; font-size:0.9rem;"><i class="fas fa-envelope"></i> Email / BRC wallet</label><input type="email" placeholder="your@bradicoin.com" value="alex@bradicoin.com" style="width:100%; padding:0.8rem 1.2rem; background:rgba(0,0,0,0.45); border:1.5px solid rgba(0,255,255,0.15); border-radius:60px; color:#f0f0ff; font-size:0.95rem; outline:none;" /></div>
-          <div class="input-group" style="margin-bottom:1.4rem;"><label style="color:#b9d0f0; font-weight:500; font-size:0.9rem;"><i class="fas fa-coins"></i> Amount (BRC)</label><input type="number" placeholder="Min 50 BRC" value="2500" style="width:100%; padding:0.8rem 1.2rem; background:rgba(0,0,0,0.45); border:1.5px solid rgba(0,255,255,0.15); border-radius:60px; color:#f0f0ff; font-size:0.95rem; outline:none;" /></div>
-          <div class="input-group" style="margin-bottom:1.4rem;"><label style="color:#b9d0f0; font-weight:500; font-size:0.9rem;"><i class="fas fa-calendar-alt"></i> Loan term</label>
-            <select style="width:100%; padding:0.8rem 1.2rem; background:rgba(0,0,0,0.45); border:1.5px solid rgba(0,255,255,0.15); border-radius:60px; color:#f0f0ff; font-size:0.95rem; outline:none;"><option>7 days (2.5% APR)</option><option selected>30 days (4.2% APR)</option><option>60 days (6.8% APR)</option><option>180 days (12% APR)</option></select>
-          </div>
-          <div class="input-group" style="margin-bottom:1.4rem;"><label style="color:#b9d0f0; font-weight:500; font-size:0.9rem;"><i class="fas fa-comment"></i> Purpose</label><input type="text" placeholder="e.g. DeFi, NFT, business" value="DeFi yield farming" style="width:100%; padding:0.8rem 1.2rem; background:rgba(0,0,0,0.45); border:1.5px solid rgba(0,255,255,0.15); border-radius:60px; color:#f0f0ff; font-size:0.95rem; outline:none;" /></div>
-          <button class="loan-btn" type="submit" style="width:100%; padding:1rem; border:none; border-radius:60px; background:linear-gradient(135deg,#2563eb,#7c3aed,#a855f7); color:white; font-weight:700; font-size:1.2rem; font-family:'Orbitron',sans-serif; box-shadow:0 0 50px rgba(37,99,235,0.3); cursor:pointer;"><i class="fas fa-rocket"></i> Get Bradicoin loan</button>
-        </form>
+      <div class="welcome-sub">
+        <i class="fas fa-robot"></i> At Bradicoin Loan, we believe that access to the financial future should be simple and for everyone. 
+        Unlike other platforms, you don't need to already own Bradicoin to apply for a loan. 
+        Our innovative methodology allows you to use different forms of collateral and receive the loan value directly in Bradicoin. 
+        Sign up now, choose the amount you want, and receive your Bradicoins in just a few minutes. It's fast, secure, transparent, and made for you.
+      </div>
+      <div style="margin-top: 2rem;">
+        <button class="btn-cta" onclick="document.getElementById('loginBtn').click();"><i class="fas fa-rocket"></i> I WANT TO APPLY FOR MY LOAN NOW</button>
+      </div>
+    </div>
+
+    <!-- SECTION 2: PROBLEM & SOLUTION -->
+    <div class="main-section">
+      <h2 class="section-title"><i class="fas fa-question-circle"></i> Why Have Thousands of People Already Chosen Bradicoin Loan?</h2>
+      <p class="section-sub">We live in a world where opportunities arise quickly, but access to financial resources doesn't always keep up with that pace. Many people have incredible projects, innovative ideas, and plans that could transform their lives, but they run into a common obstacle: the lack of immediate liquidity.</p>
+      <p class="section-sub">Traditional financial systems are slow, bureaucratic, and often exclude those who don't have a perfect credit history or collateral that banks consider acceptable. The result? Talented and promising people wait weeks, or even months, for an approval that often never comes.</p>
+      <p class="section-sub">It was precisely with this problem in mind that we created <strong>Bradicoin Loan</strong>. Our platform was born with a clear purpose: <strong>to democratize access to credit</strong> using the technology and innovation of the Bradicoin ecosystem. We want you to have the power to achieve your dreams without having to sell your assets, without going through embarrassing situations at bank branches, and without waiting days for a response that should be immediate.</p>
+      <p class="section-sub">With Bradicoin Loan, you turn your potential into reality. And the best part: <strong>you don't need to be a cryptocurrency expert or already have Bradicoin to get started</strong>. Our platform was designed to be intuitive, welcoming, and accessible to everyone, regardless of your level of knowledge about the digital world.</p>
+    </div>
+
+    <!-- SECTION 3: DIFFERENTIAL -->
+    <div class="main-section">
+      <h2 class="section-title"><i class="fas fa-fire" style="color: #f472b6;"></i> The Differential That Makes Bradicoin Loan the Best Choice</h2>
+      <h3 style="font-family: 'Orbitron', sans-serif; color: #a5f3fc; font-size: 1rem; margin-bottom: 1rem; letter-spacing: 0.02em;">You do NOT need to have Bradicoin as collateral. Understand why this is revolutionary.</h3>
+      <div class="highlight-box-glow" style="text-align: center; border: 2px solid rgba(0, 255, 255, 0.15);">
+        <i class="fas fa-check-circle" style="font-size: 3rem; color: #22d3ee; margin-bottom: 0.5rem;"></i>
+        <h3 style="color: #fcd34d; font-size: 1.4rem;">✅ YOU DON'T NEED TO HAVE BRADICOIN</h3>
+        <p style="font-size: 0.85rem;">Our platform does NOT require other currencies or assets as collateral. We exclusively lend in Bradicoin.</p>
+        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1rem; color: #cbd5e1; font-size: 0.7rem;">
+          <span><i class="fas fa-arrow-right" style="color: #22d3ee;"></i> No other currencies needed</span>
+          <span><i class="fas fa-arrow-right" style="color: #22d3ee;"></i> We evaluate and approve in minutes</span>
+          <span><i class="fas fa-arrow-right" style="color: #22d3ee;"></i> You receive the value IN BRADICOIN</span>
+        </div>
+      </div>
+      <p class="section-sub">Have you ever stopped to think about how many opportunities you've missed because you didn't have the necessary financial resources at the right time? Or how many times you gave up on a project because you thought the process of getting credit would be too complicated?</p>
+      <p class="section-sub">Bradicoin Loan came to change that reality. The biggest innovation of our platform is precisely the flexibility we offer you. While most financial institutions require you to already own the asset you want to use as collateral, we break that paradigm. Here, you can use different types of collateral you already own and receive the loan value <strong>in Bradicoin</strong>.</p>
+      <p class="section-sub">This means you don't need to sell anything, don't need to give up your assets, and don't need to go through the embarrassment of having your request denied due to a lack of credit history. You simply present your collateral, choose the amount you want to receive, and that's it — the Bradicoins are in your digital wallet in minutes.</p>
+    </div>
+
+    <!-- SECTION 4: HOW TO APPLY (STEPS) -->
+    <div class="main-section">
+      <h2 class="section-title"><i class="fas fa-list-ol"></i> How to Apply for a Loan in Bradicoin — Complete Step-by-Step Guide</h2>
+      <p class="section-sub">At Bradicoin Loan, we've created a simple and transparent process so you can access credit in Bradicoin quickly and securely. Check out each step below in detail to understand how it works.</p>
+      
+      <ol class="step-list">
+        <li><strong>STEP 1 — PLATFORM REGISTRATION</strong><span>Create your Bradicoin Loan account in less than 5 minutes. You'll need: a valid email, phone number, secure password, and acceptance of terms.</span></li>
+        <li><strong>STEP 2 — KYC VERIFICATION PROCESS (Know Your Customer)</strong><span>Submit your ID document, selfie with document, proof of address (last 3 months), and confirm your email. Mandatory for security and compliance.</span></li>
+        <li><strong>STEP 3 — BRADICOIN LOAN SCORE SYSTEM</strong><span>The more you use the platform, the better your conditions. Your Score increases with each loan requested and paid on time.</span></li>
+        <li><strong>STEP 4 — CHOOSING THE LOAN TYPE</strong><span>Choose between <strong style="color: #2dd4bf;">Turbo Loan</strong> (ultra-fast approval with platform's own resources) or <strong style="color: #a78bfa;">Investor-to-Investor Loan</strong> (connect with investors offering personalized conditions).</span></li>
+        <li><strong>STEP 5 — DEFINING LOAN DETAILS</strong><span>Configure: Amount in Bradicoin, Payment Term, Interest Rate Offered, Collateral Offered, and Loan Purpose.</span></li>
+        <li><strong>STEP 6 — ANALYSIS AND APPROVAL</strong><span>Turbo Loan: automatic analysis in minutes. Investor-to-Investor: your request is published and investors make offers.</span></li>
+        <li><strong>STEP 7 — RECEIVING YOUR BRADICOINS</strong><span>After approval or acceptance of an offer, Bradicoins are sent directly to your digital wallet in minutes.</span></li>
+      </ol>
+
+      <!-- Score Table -->
+      <div style="margin: 2rem 0;">
+        <h3 style="font-family: 'Orbitron', sans-serif; color: #a5f3fc; margin-bottom: 0.5rem; font-size: 1rem;">Bradicoin Loan Score System</h3>
+        <table class="table-score">
+          <thead><tr><th>Level</th><th>Score</th><th>Benefits</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge-level badge-beginner">🟢 Beginner</span></td><td>0 - 100</td><td>Basic platform access, standard rates</td></tr>
+            <tr><td><span class="badge-level badge-bronze">🟡 Bronze</span></td><td>101 - 300</td><td>Reduced rates, priority analysis</td></tr>
+            <tr><td><span class="badge-level badge-silver">🟠 Silver</span></td><td>301 - 600</td><td>Even lower rates, higher amounts</td></tr>
+            <tr><td><span class="badge-level badge-gold">🔴 Gold</span></td><td>601 - 900</td><td>Preferential rates, ultra-fast analysis</td></tr>
+            <tr><td><span class="badge-level badge-diamond">💎 Diamond</span></td><td>901+</td><td>Best rates, priority support, maximum limits</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Loan Modalities -->
+      <div class="grid-2col">
+        <div class="card-neon">
+          <h4><i class="fas fa-bolt" style="color: #f472b6;"></i> MODALITY 1 — TURBO LOAN</h4>
+          <p><strong>Ultra-fast approval with Bradicoin Loan's own resources.</strong></p>
+          <p>Approval in minutes, almost immediate release. Resource source: Bradicoin Loan's own fund. Always available. 100% managed by the platform.</p>
+          <p style="margin-top: 0.5rem; color: #bae6fd; font-size: 0.7rem;">Who it's for: Those who need money urgently, want a simple process, or are just starting out.</p>
+        </div>
+        <div class="card-neon">
+          <h4><i class="fas fa-handshake" style="color: #a78bfa;"></i> MODALITY 2 — INVESTOR-TO-INVESTOR LOAN</h4>
+          <p><strong>We connect you to investors who have Bradicoin available to invest.</strong></p>
+          <p>Your request is published, investors analyze and make offers. You choose the best offer. Funds are released after acceptance.</p>
+          <p style="margin-top: 0.5rem; color: #bae6fd; font-size: 0.7rem;">Who it's for: Those seeking personalized conditions, with a good Score, or who want to negotiate the best rates.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: ADVANTAGES -->
+    <div class="main-section">
+      <h2 class="section-title"><i class="fas fa-star" style="color: #fcd34d;"></i> Advantages That Make a Difference in Your Financial Life</h2>
+      <div class="grid-2col">
+        <div class="card-neon"><h4><i class="fas fa-unlock"></i> No Bureaucracy</h4><p>No queues, paperwork, or endless analyses. 100% digital process, approval in minutes.</p></div>
+        <div class="card-neon"><h4><i class="fas fa-clock"></i> Approval in Minutes</h4><p>Your life can't wait days for an answer. Our technology analyzes and approves in record time.</p></div>
+        <div class="card-neon"><h4><i class="fas fa-coins"></i> Receive in Bradicoin</h4><p>The loan amount is credited in Bradicoin, an innovative digital currency with fast transactions and low fees.</p></div>
+        <div class="card-neon"><h4><i class="fas fa-chart-line"></i> Progressive Score System</h4><p>The more you use it, the better your conditions. Higher Score = lower rates, higher limits.</p></div>
+        <div class="card-neon"><h4><i class="fas fa-shield-alt"></i> Security and Transparency</h4><p>Cutting-edge technology to protect your interests. No fine print or unpleasant surprises.</p></div>
+        <div class="card-neon"><h4><i class="fas fa-exchange-alt"></i> Two Loan Modalities</h4><p>Choose the option that best meets your needs: Turbo Loan or Investor-to-Investor Loan.</p></div>
+      </div>
+    </div>
+
+    <!-- SECTION 6: WHO CAN APPLY -->
+    <div class="main-section">
+      <h2 class="section-title"><i class="fas fa-users"></i> The Bradicoin Loan is for You If...</h2>
+      <div class="grid-2col">
+        <div class="card-neon"><h4>👨‍💼 THE ENTREPRENEUR</h4><p>You have an incredible business idea, but lack capital. Access credit without bureaucracy.</p></div>
+        <div class="card-neon"><h4>👩‍🎓 THE STUDENT</h4><p>Invest in your education, exchange program, or career-boosting course.</p></div>
+        <div class="card-neon"><h4>🏠 THE HOMEOWNER</h4><p>Renovations, improvements, or adaptations to your home without compromising savings.</p></div>
+        <div class="card-neon"><h4>💳 THOSE WITH DEBT</h4><p>Consolidate high-interest debts with more advantageous conditions.</p></div>
+        <div class="card-neon"><h4>🚀 THE TRAVELER</h4><p>Make your dream trip happen with fair conditions and flexible payment.</p></div>
+        <div class="card-neon"><h4>💡 THE OPPORTUNIST</h4><p>A unique opportunity appeared and you need money quickly to seize it.</p></div>
+      </div>
+    </div>
+
+    <!-- SECTION 7: FAQ -->
+    <div class="main-section">
+      <h2 class="section-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions about Bradicoin Loan</h2>
+      <div class="faq-item active"><div class="q" onclick="this.parentElement.classList.toggle('active')">Do I need to have Bradicoin to apply for a loan? <i class="fas fa-chevron-down"></i></div><div class="a">No! That's exactly our biggest differentiator. You can use other assets as collateral and receive the loan value in Bradicoin.</div></div>
+      <div class="faq-item"><div class="q" onclick="this.parentElement.classList.toggle('active')">What is KYC and why do I need to go through this process? <i class="fas fa-chevron-down"></i></div><div class="a">KYC stands for Know Your Customer. It's a mandatory identity verification process to ensure security, prevent fraud, and comply with legal regulations.</div></div>
+      <div class="faq-item"><div class="q" onclick="this.parentElement.classList.toggle('active')">How does the Score system work? <i class="fas fa-chevron-down"></i></div><div class="a">The Bradicoin Loan Score rewards consistent platform use. More loans paid correctly = higher Score = lower rates and better conditions.</div></div>
+      <div class="faq-item"><div class="q" onclick="this.parentElement.classList.toggle('active')">What's the difference between Turbo Loan and Investor-to-Investor Loan? <i class="fas fa-chevron-down"></i></div><div class="a">Turbo Loan uses platform's own resources with instant approval. Investor-to-Investor connects you with investors who offer personalized conditions.</div></div>
+      <div class="faq-item"><div class="q" onclick="this.parentElement.classList.toggle('active')">What types of collateral do you accept? <i class="fas fa-chevron-down"></i></div><div class="a">We accept different types of assets, from physical assets with recognized market value to other digital assets. Contact us for details.</div></div>
+      <div class="faq-item"><div class="q" onclick="this.parentElement.classList.toggle('active')">How long does it take to receive the Bradicoins after approval? <i class="fas fa-chevron-down"></i></div><div class="a">After confirmation of your collateral and loan approval, the Bradicoins are released to your digital wallet in just a few minutes.</div></div>
+    </div>
+
+    <!-- SECTION 8: TESTIMONIALS -->
+    <div class="main-section">
+      <h2 class="section-title"><i class="fas fa-comment-dots"></i> What Our Customers Are Saying</h2>
+      <div class="testimonial"><p>"I never imagined it would be this easy! I always wanted to invest in a project, but banks said my credit history wasn't enough. At Bradicoin Loan, the KYC process was fast, I was approved in minutes, and I received the Bradicoins quickly."</p><div class="author">— Carlos M., Entrepreneur</div></div>
+      <div class="testimonial"><p>"The Investor-to-Investor Loan was the best option for me. I needed a larger amount and got much better conditions. Several investors made offers and I could choose the best one."</p><div class="author">— Fernanda S., Business Owner</div></div>
+      <div class="testimonial"><p>"The Turbo Loan saved my business! My company had tight cash flow and I needed money fast. The Turbo Loan was approved in minutes and the Bradicoins landed in my wallet almost immediately."</p><div class="author">— Roberto L., Small Business Owner</div></div>
+    </div>
+
+    <!-- SECTION 9: PROCESS FLOW -->
+    <div class="main-section">
+      <h2 class="section-title"><i class="fas fa-project-diagram"></i> Bradicoin Loan Process Summary</h2>
+      <div class="process-flow">
+        <div class="process-step"><div class="num">1</div><div class="label">Registration</div></div>
+        <div class="process-step"><div class="num">2</div><div class="label">KYC Verification</div></div>
+        <div class="process-step"><div class="num">3</div><div class="label">Score System</div></div>
+        <div class="process-step"><div class="num">4</div><div class="label">Choose Modality</div></div>
+        <div class="process-step"><div class="num">5</div><div class="label">Define Details</div></div>
+        <div class="process-step"><div class="num">6</div><div class="label">Analysis & Approval</div></div>
+        <div class="process-step"><div class="num">7</div><div class="label">Receiving</div></div>
+      </div>
+    </div>
+
+    <!-- FINAL CTA -->
+    <div class="main-section" style="text-align: center; padding: 2rem 0;">
+      <h2 class="section-title" style="font-size: 2rem;">Ready to Turn Your Plans into Reality?</h2>
+      <p class="section-sub" style="max-width: 700px; margin: 0 auto 1.5rem;">You've already wasted too much time waiting. Traditional banks will continue to be slow and bureaucratic. Bradicoin Loan is different. We were born to be agile, accessible, and fair.</p>
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <button class="btn-cta" onclick="document.getElementById('loginBtn').click();"><i class="fas fa-rocket"></i> I WANT TO APPLY FOR MY LOAN NOW</button>
       </div>
     </div>
   </div>
 
-  <!-- ===== DASHBOARD (hidden) ===== -->
+  <!-- ===== DASHBOARD - ORGANIZED ===== -->
   <div id="dashboard">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem;">
-      <h2 style="font-family:'Orbitron',sans-serif; color:#c4b5fd; font-size:2rem;"><i class="fas fa-tachometer-alt" style="color:#2dd4bf;"></i> Dashboard</h2>
-      <span style="color:#8a9bb8; font-size:0.9rem;"><i class="fas fa-user-astronaut"></i> Alex Rivera</span>
+      <h2 style="font-family:'Orbitron',sans-serif; color:#c4b5fd; font-size:1.4rem;"><i class="fas fa-tachometer-alt" style="color:#2dd4bf;"></i> Dashboard</h2>
+      <span style="font-family:'Orbitron',sans-serif; color:#8a9bb8; font-size:0.7rem;"><i class="fas fa-user-astronaut"></i> Alex Rivera</span>
     </div>
-
     <div class="dash-grid">
       <!-- CONFIGURATION -->
-      <div class="dash-card">
-        <h3><i class="fas fa-cog"></i> Configuration</h3>
+      <div class="dash-card"><h3><i class="fas fa-cog"></i> Configuration</h3>
         <div class="input-group"><label>Default currency</label><input type="text" value="BRC" /></div>
         <div class="input-group"><label>Language</label><input type="text" value="English" /></div>
         <div class="input-group"><label>Notification</label><input type="text" value="Email + Push" /></div>
@@ -456,88 +842,178 @@
       </div>
 
       <!-- KYC -->
-      <div class="dash-card">
-        <h3><i class="fas fa-id-card"></i> KYC Verification</h3>
-        <p style="color:#b9c8e6; font-size:0.9rem; margin-bottom:1rem;">Upload your documents to unlock full loan limits.</p>
+      <div class="dash-card"><h3><i class="fas fa-id-card"></i> KYC Verification</h3>
+        <p style="font-family:'Orbitron',sans-serif; color:#b9c8e6; font-size:0.55rem; margin-bottom:0.8rem;">Upload documents to unlock full loan limits.</p>
         <div class="kyc-upload" onclick="document.getElementById('fileUpload').click();">
-          <i class="fas fa-cloud-upload-alt"></i>
-          <div>Click to upload ID / Passport</div>
+          <i class="fas fa-cloud-upload-alt"></i><div>Upload ID / Passport</div>
           <input type="file" id="fileUpload" style="display:none;" accept="image/*,.pdf" />
         </div>
-        <div class="kyc-upload" style="margin-top:0.8rem;" onclick="document.getElementById('fileUpload2').click();">
-          <i class="fas fa-file-invoice"></i>
-          <div>Proof of address</div>
+        <div class="kyc-upload" style="margin-top:0.5rem;" onclick="document.getElementById('fileUpload2').click();">
+          <i class="fas fa-file-invoice"></i><div>Proof of address</div>
           <input type="file" id="fileUpload2" style="display:none;" accept="image/*,.pdf" />
         </div>
-        <button class="dash-btn" style="margin-top:1rem;" onclick="alert('📤 KYC documents submitted (simulated)')"><i class="fas fa-check-circle"></i> Submit KYC</button>
+        <button class="dash-btn" style="margin-top:0.8rem;" onclick="alert('📤 KYC submitted (demo)')"><i class="fas fa-check-circle"></i> Submit KYC</button>
       </div>
 
       <!-- CREATE LOAN -->
-      <div class="dash-card" style="grid-column: 1 / 2;">
-        <h3><i class="fas fa-hand-holding-usd"></i> Create Loan</h3>
-        <div class="input-group"><label>Loan Title</label><input type="text" placeholder="e.g. DeFi expansion" value="Yield farming pool" /></div>
-        <div class="input-group"><label>Description</label><textarea placeholder="Describe your loan purpose">To provide liquidity for BRC/ETH pool.</textarea></div>
+      <div class="dash-card"><h3><i class="fas fa-hand-holding-usd"></i> Create Loan</h3>
+        <div class="input-group"><label>Loan Title</label><input type="text" placeholder="e.g. DeFi expansion" value="Yield farming" /></div>
+        <div class="input-group"><label>Description</label><textarea placeholder="Describe purpose">Provide liquidity for BRC/ETH pool.</textarea></div>
         <div class="input-group"><label>Interest Rate (%)</label><input type="number" step="0.1" value="4.2" /></div>
-        <div class="input-group"><label>Amount (BRD)</label><input type="number" value="12500" /></div>
+        <div class="input-group"><label>Amount (BRC)</label><input type="number" value="12500" /></div>
         <button class="dash-btn" onclick="alert('✅ Loan created (demo)')"><i class="fas fa-plus-circle"></i> Create Loan</button>
       </div>
 
       <!-- TURBO LOAN -->
-      <div class="dash-card">
-        <h3><i class="fas fa-bolt" style="color:#f472b6;"></i> Turbo Loan</h3>
-        <p style="color:#b9c8e6; font-size:0.9rem; margin-bottom:0.8rem;">Instant approval · up to 5,000 BRC · 0% fee</p>
-        <div class="input-group"><label>Amount (BRC)</label><input type="number" value="2500" /></div>
-        <div class="input-group"><label>Repay in</label>
-          <select><option>24 hours</option><option>48 hours</option><option>7 days</option></select>
+      <div class="dash-card"><h3><i class="fas fa-bolt" style="color:#f472b6;"></i> Turbo Loan</h3>
+        <p style="font-family:'Orbitron',sans-serif; color:#b9c8e6; font-size:0.55rem; margin-bottom:0.8rem;">Instant approval · up to 5,000 BRC · 0% fee</p>
+        <div class="turbo-locked" id="turboLockMsg" style="font-size:0.5rem; color:#f472b6; margin-bottom:0.5rem;"><i class="fas fa-lock"></i> Disponível apenas para ranking D ou superior</div>
+        <div class="input-group"><label>Amount (BRC)</label><input type="number" value="2500" id="turboAmount" /></div>
+        <div class="input-group"><label>Repay in</label><select id="turboPeriod"><option>24 hours</option><option>48 hours</option><option>7 days</option></select></div>
+        <button class="dash-btn" style="background:linear-gradient(135deg,#d946ef,#7c3aed);" id="turboBtn" disabled onclick="alert('⚡ Turbo loan requested (demo)')"><i class="fas fa-rocket"></i> Get Turbo Loan</button>
+      </div>
+
+      <!-- STAKING -->
+      <div class="dash-card"><h3><i class="fas fa-coins" style="color:#fcd34d;"></i> Staking</h3>
+        <p style="font-family:'Orbitron',sans-serif; color:#b9c8e6; font-size:0.55rem; margin-bottom:0.8rem;">Stake BRC and earn rewards. Flexible terms, high APY.</p>
+        <div class="input-group"><label>Amount to Stake (BRC)</label><input type="number" placeholder="Min 100 BRC" value="500" /></div>
+        <div class="input-group"><label>Staking Period</label>
+          <select><option>30 days (5% APY)</option><option>60 days (7.5% APY)</option><option>90 days (12% APY)</option><option>180 days (18% APY)</option></select>
         </div>
-        <button class="dash-btn" style="background:linear-gradient(135deg,#d946ef,#7c3aed);" onclick="alert('⚡ Turbo loan requested (demo)')"><i class="fas fa-rocket"></i> Get Turbo Loan</button>
+        <button class="dash-btn green" onclick="alert('🔒 Staking activated! (demo)')"><i class="fas fa-lock"></i> Stake Now</button>
+        <div style="margin-top:0.4rem; font-size:0.5rem; color:#6b8cbd;"><i class="fas fa-info-circle"></i> Rewards distributed daily</div>
+      </div>
+
+      <!-- AIRDROP -->
+      <div class="dash-card"><h3><i class="fas fa-gift" style="color:#f472b6;"></i> Airdrop</h3>
+        <p style="font-family:'Orbitron',sans-serif; color:#b9c8e6; font-size:0.55rem; margin-bottom:0.8rem;">Claim free BRC tokens. Participate in community airdrops.</p>
+        <div style="background:rgba(0,0,0,0.3); border-radius:1.2rem; padding:0.8rem; margin-bottom:0.8rem; text-align:center; border:1px dashed rgba(0,255,255,0.1);">
+          <span style="font-size:0.8rem; color:#fcd34d;">🎁 250 BRC</span>
+          <span style="display:block; font-size:0.5rem; color:#8a9bb8;">Available for claiming</span>
+        </div>
+        <div class="input-group"><label>Your BRC Wallet</label><input type="text" placeholder="0x... or BRC address" value="0x7F4...cB92" /></div>
+        <button class="dash-btn pink" onclick="alert('🎉 Airdrop claimed! (demo)')"><i class="fas fa-arrow-down"></i> Claim Airdrop</button>
+        <div style="margin-top:0.4rem; font-size:0.5rem; color:#6b8cbd;"><i class="fas fa-clock"></i> Next airdrop in 2d 14h</div>
+      </div>
+
+      <!-- SEND BRC -->
+      <div class="dash-card"><h3><i class="fas fa-paper-plane" style="color:#22d3ee;"></i> Send BRC</h3>
+        <p style="font-family:'Orbitron',sans-serif; color:#b9c8e6; font-size:0.55rem; margin-bottom:0.8rem;">Send Bradicoin to any wallet address.</p>
+        <div class="input-group"><label>Recipient Wallet</label><input type="text" placeholder="0x... or BRC address" value="0x8F3...dE71" /></div>
+        <div class="input-group"><label>Amount (BRC)</label><input type="number" placeholder="0.00" value="50" /></div>
+        <button class="dash-btn cyan" onclick="document.getElementById('sendModal').classList.add('active');"><i class="fas fa-arrow-right"></i> Send</button>
+      </div>
+
+      <!-- RECEIVE & GENERATE WALLET -->
+      <div class="dash-card"><h3><i class="fas fa-qrcode" style="color:#34d399;"></i> Receive & Wallet</h3>
+        <p style="font-family:'Orbitron',sans-serif; color:#b9c8e6; font-size:0.55rem; margin-bottom:0.3rem;">Your BRC wallet address to receive funds.</p>
+        <div class="address-display" id="walletAddressDisplay">0x7F4...cB92</div>
+        <div class="dash-row">
+          <button class="dash-btn amber" onclick="navigator.clipboard.writeText(document.getElementById('walletAddressDisplay').textContent); alert('📋 Address copied!')"><i class="fas fa-copy"></i> Copy</button>
+          <button class="dash-btn purple" onclick="generateNewWallet();"><i class="fas fa-sync-alt"></i> Generate</button>
+        </div>
+        <div style="margin-top:0.4rem; font-size:0.5rem; color:#6b8cbd;"><i class="fas fa-info-circle"></i> New wallet generated on-chain</div>
       </div>
     </div>
-
-    <!-- LOGOUT -->
-    <div class="logout-area">
-      <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
-    </div>
+    <div class="logout-area"><button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button></div>
   </div>
 </div>
 
-<!-- ===== LOGOUT CONFIRM MODAL ===== -->
-<div class="modal-overlay" id="logoutModal">
+<!-- SEND MODAL -->
+<div class="modal-overlay" id="sendModal">
   <div class="modal-box">
-    <h2><i class="fas fa-question-circle" style="color:#f472b6;"></i> Confirm</h2>
-    <p>Are you sure you want to logout?</p>
-    <div class="modal-actions">
-      <button class="btn-yes" id="logoutYes">Yes</button>
-      <button class="btn-no" id="logoutNo">No</button>
+    <button class="close-modal" onclick="document.getElementById('sendModal').classList.remove('active');">&times;</button>
+    <h2><i class="fas fa-paper-plane" style="color:#22d3ee;"></i> Send Bradicoin</h2>
+    <p>Confirm transaction details below.</p>
+    <div class="input-group"><label>Recipient Wallet</label><input type="text" id="sendRecipient" value="0x8F3...dE71" /></div>
+    <div class="input-group"><label>Amount (BRC)</label><input type="number" id="sendAmount" value="50" /></div>
+    <div style="display:flex; gap:0.8rem; justify-content:center; margin-top:0.5rem;">
+      <button class="modal-btn" style="flex:1;" onclick="alert('✅ Transaction sent! (demo)'); document.getElementById('sendModal').classList.remove('active');"><i class="fas fa-check"></i> Send</button>
+      <button class="modal-btn" style="flex:1; background:transparent; border:1.5px solid rgba(255,255,255,0.15); box-shadow:none;" onclick="document.getElementById('sendModal').classList.remove('active');">Cancel</button>
     </div>
   </div>
 </div>
 
-<!-- ===== LOGIN / SIGNUP MODAL (free test) ===== -->
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="#" onclick="alert('About Bradi Loan – next‑gen crypto lending')"><i class="fas fa-info-circle"></i> About</a>
+    <a href="#" onclick="alert('Privacy policy – data secured on-chain')"><i class="fas fa-lock"></i> Privacy</a>
+    <a href="#" onclick="alert('Contact – support@bradiloan.io')"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="https://www.bradicoin.com" target="_blank" style="border-bottom:none;"><i class="fas fa-external-link-alt"></i> Bradicoin</a>
+  </div>
+  <div class="footer-copy"><i class="fas fa-copyright"></i> 2026 Bradi Loan · built on <i class="fas fa-cube"></i> Bradicoin</div>
+</footer>
+
+<!-- LOGOUT MODAL -->
+<div class="modal-overlay" id="logoutModal">
+  <div class="modal-box"><h2><i class="fas fa-question-circle" style="color:#f472b6;"></i> Confirm</h2><p>Are you sure you want to logout?</p>
+    <div class="modal-actions"><button class="btn-yes" id="logoutYes">Yes</button><button class="btn-no" id="logoutNo">No</button></div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
 <div class="modal-overlay" id="authModal">
-  <div class="modal-box" style="max-width:440px;">
-    <button class="close-modal" id="closeAuthModal" style="position:absolute; top:1rem; right:1.5rem; font-size:1.8rem; color:#a5b4fc; cursor:pointer; background:none; border:none;">&times;</button>
+  <div class="modal-box">
+    <button class="close-modal" id="closeAuthModal">&times;</button>
     <div id="authFormContainer">
-      <h2 style="font-family:'Orbitron',sans-serif; color:#c4b5fd; font-size:1.8rem; text-align:center; margin-bottom:1.8rem;"><i class="fas fa-sign-in-alt" style="color:#22d3ee;"></i> Login</h2>
+      <h2><i class="fas fa-sign-in-alt" style="color:#22d3ee;"></i> Login</h2>
       <div class="input-group"><label>Email</label><input type="email" placeholder="test@bradicoin.com" id="loginEmailTest" value="demo@bradicoin.com" /></div>
       <div class="input-group"><label>Password</label><input type="password" placeholder="••••••••" id="loginPassTest" value="123456" /></div>
-      <button class="modal-btn" id="loginTestBtn" style="width:100%; padding:0.9rem; border:none; border-radius:60px; background:linear-gradient(135deg,#2563eb,#7c3aed); color:white; font-weight:700; font-size:1.1rem; font-family:'Orbitron',sans-serif; cursor:pointer; box-shadow:0 0 40px rgba(37,99,235,0.25);"><i class="fas fa-arrow-right"></i> Sign In</button>
-      <div style="text-align:center; margin-top:1rem; color:#8a9bb8; font-size:0.9rem;">Don't have an account? <span id="switchToSignup" style="color:#a78bfa; cursor:pointer; font-weight:600; border-bottom:1px dashed #a78bfa;">Sign Up</span></div>
+      <button class="modal-btn" id="loginTestBtn"><i class="fas fa-arrow-right"></i> Sign In</button>
+      <div class="modal-switch">Don't have an account? <span id="switchToSignup">Sign Up</span></div>
     </div>
     <div id="signupFormContainer" style="display:none;">
-      <h2 style="font-family:'Orbitron',sans-serif; color:#c4b5fd; font-size:1.8rem; text-align:center; margin-bottom:1.8rem;"><i class="fas fa-user-plus" style="color:#22d3ee;"></i> Sign Up</h2>
+      <h2><i class="fas fa-user-plus" style="color:#22d3ee;"></i> Sign Up</h2>
       <div class="input-group"><label>Email</label><input type="email" placeholder="you@example.com" id="signupEmailTest" /></div>
       <div class="input-group"><label>Password</label><input type="password" placeholder="Use @, #, $, &amp;" id="signupPassTest" /></div>
       <div class="input-group"><label>Repeat Password</label><input type="password" placeholder="Confirm" id="signupPassRepeatTest" /></div>
-      <button class="modal-btn" id="signupTestBtn" style="width:100%; padding:0.9rem; border:none; border-radius:60px; background:linear-gradient(135deg,#2563eb,#7c3aed); color:white; font-weight:700; font-size:1.1rem; font-family:'Orbitron',sans-serif; cursor:pointer;"><i class="fas fa-user-check"></i> Create Account</button>
-      <div style="text-align:center; margin-top:1rem; color:#8a9bb8; font-size:0.9rem;">Already have an account? <span id="switchToLogin" style="color:#a78bfa; cursor:pointer; font-weight:600; border-bottom:1px dashed #a78bfa;">Login</span></div>
+      <button class="modal-btn" id="signupTestBtn"><i class="fas fa-user-check"></i> Create Account</button>
+      <div class="modal-switch">Already have an account? <span id="switchToLogin">Login</span></div>
     </div>
   </div>
 </div>
 
 <script>
+  // RANKING SYSTEM
+  let currentRank = 'F';
+  let currentPoints = 0;
+  const rankMap = { 'F':0, 'E':500, 'D':1200, 'C':2200, 'B':3500, 'A':5000 };
+  const rankOrder = ['F','E','D','C','B','A'];
+  const rankColors = { 'F':'#4a5568', 'E':'#e53e3e', 'D':'#ed8936', 'C':'#ecc94b', 'B':'#48bb78', 'A':'#38a169' };
+
+  function updateRankUI() {
+    const idx = rankOrder.indexOf(currentRank);
+    const rankEl = document.querySelector('.rank-badge .rank-letter');
+    if(rankEl) rankEl.textContent = currentRank;
+    // update turbo button
+    const unlockRanks = ['D','C','B','A'];
+    const turboBtn = document.getElementById('turboBtn');
+    const turboLock = document.getElementById('turboLockMsg');
+    if (unlockRanks.includes(currentRank)) {
+      turboBtn.disabled = false;
+      turboLock.innerHTML = '<i class="fas fa-check-circle" style="color:#48bb78;"></i> Turbo disponível!';
+      turboLock.style.color = '#48bb78';
+    } else {
+      turboBtn.disabled = true;
+      turboLock.innerHTML = '<i class="fas fa-lock"></i> Disponível apenas para ranking D ou superior';
+      turboLock.style.color = '#f472b6';
+    }
+  }
+
+  // Generate new wallet address
+  function generateNewWallet() {
+    const chars = '0123456789ABCDEF';
+    let addr = '0x';
+    for (let i = 0; i < 40; i++) {
+      addr += chars[Math.floor(Math.random() * 16)];
+    }
+    document.getElementById('walletAddressDisplay').textContent = addr;
+    alert('🆕 New wallet generated: ' + addr);
+  }
+
+  // LOGIN / LOGOUT
   (function() {
-    // DOM refs
     const mainContent = document.getElementById('mainContent');
     const dashboard = document.getElementById('dashboard');
     const authModal = document.getElementById('authModal');
@@ -555,20 +1031,12 @@
     const logoutYes = document.getElementById('logoutYes');
     const logoutNo = document.getElementById('logoutNo');
 
-    // show login modal
     function openAuthModal(mode) {
       authModal.classList.add('active');
-      if (mode === 'signup') {
-        authForm.style.display = 'none';
-        signupForm.style.display = 'block';
-      } else {
-        authForm.style.display = 'block';
-        signupForm.style.display = 'none';
-      }
+      if (mode === 'signup') { authForm.style.display = 'none'; signupForm.style.display = 'block'; }
+      else { authForm.style.display = 'block'; signupForm.style.display = 'none'; }
     }
-    function closeAuthModal() {
-      authModal.classList.remove('active');
-    }
+    function closeAuthModal() { authModal.classList.remove('active'); }
 
     loginBtn.addEventListener('click', (e) => { e.preventDefault(); openAuthModal('login'); });
     signupBtn.addEventListener('click', (e) => { e.preventDefault(); openAuthModal('signup'); });
@@ -577,18 +1045,16 @@
     switchToSignup.addEventListener('click', () => openAuthModal('signup'));
     switchToLogin.addEventListener('click', () => openAuthModal('login'));
 
-    // login test: show dashboard
     loginTestBtn.addEventListener('click', function(e) {
       e.preventDefault();
       closeAuthModal();
-      // hide main, show dashboard
       mainContent.style.display = 'none';
       dashboard.classList.add('active');
+      updateRankUI();
     });
 
     signupTestBtn.addEventListener('click', function(e) {
       e.preventDefault();
-      // simple signup simulation
       const p1 = document.getElementById('signupPassTest').value;
       const p2 = document.getElementById('signupPassRepeatTest').value;
       if (p1 !== p2) { alert('Passwords do not match.'); return; }
@@ -597,73 +1063,110 @@
       closeAuthModal();
       mainContent.style.display = 'none';
       dashboard.classList.add('active');
+      updateRankUI();
     });
 
-    // logout flow
-    logoutBtn.addEventListener('click', () => {
-      logoutModal.classList.add('active');
-    });
-
+    logoutBtn.addEventListener('click', () => { logoutModal.classList.add('active'); });
     logoutYes.addEventListener('click', () => {
       logoutModal.classList.remove('active');
       dashboard.classList.remove('active');
       mainContent.style.display = 'block';
-      // reset to main view
     });
-
-    logoutNo.addEventListener('click', () => {
-      logoutModal.classList.remove('active');
-    });
-
-    // close logout modal on overlay click
+    logoutNo.addEventListener('click', () => { logoutModal.classList.remove('active'); });
     logoutModal.addEventListener('click', (e) => {
       if (e.target === logoutModal) logoutModal.classList.remove('active');
     });
-
-    // ESC for modals
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         if (authModal.classList.contains('active')) closeAuthModal();
         if (logoutModal.classList.contains('active')) logoutModal.classList.remove('active');
+        if (document.getElementById('sendModal').classList.contains('active')) 
+          document.getElementById('sendModal').classList.remove('active');
       }
     });
-
-    // close auth on ESC handled above
   })();
 
-  // translator demo
+  // Translation function
   function translatePage(lang) {
-    const welcome = document.querySelector('.welcome-title span');
-    const sub = document.querySelector('.welcome-sub');
-    const infoTitle = document.querySelector('.info-panel h3');
-    const formTitle = document.querySelector('.loan-form h3');
-    const btn = document.querySelector('.loan-btn');
-    const footnote = document.querySelector('.footnote');
     const dict = {
-      en: { welcome: 'Bradicoin', sub: 'Future‑ready lending · Borrow Bradicoin (BRC) for diverse use cases', info: 'Bradicoin loan', form: 'Request loan', btn: 'Get Bradicoin loan', foot: 'secured by Bradicoin smart contracts · rate 4.2%' },
-      pt: { welcome: 'Bradicoin', sub: 'Empréstimo futurista · Peça Bradicoin (BRC) para diversos usos', info: 'Empréstimo Bradicoin', form: 'Solicitar empréstimo', btn: 'Obter empréstimo Bradicoin', foot: 'protegido por smart contracts Bradicoin · taxa 4.2%' },
-      es: { welcome: 'Bradicoin', sub: 'Préstamo futurista · Pide Bradicoin (BRC) para diversos usos', info: 'Préstamo Bradicoin', form: 'Solicitar préstamo', btn: 'Obtener préstamo Bradicoin', foot: 'asegurado por smart contracts Bradicoin · tasa 4.2%' },
-      ar: { welcome: 'براديكوين', sub: 'إقراض مستقبلي · اقترض براديكوين (BRC) لاستخدامات متنوعة', info: 'قرض براديكوين', form: 'طلب قرض', btn: 'احصل على قرض براديكوين', foot: 'مؤمن بعقود براديكوين الذكية · معدل 4.2%' }
+      en: {
+        hero: "Achieve Your Projects with a <span>Bradicoin Loan</span>.<br><span style='font-size:1.4rem;background:none;color:#a5f3fc;text-shadow:0 0 40px rgba(0,255,255,0.15);'>You Don't Need to Have Bradicoin to Get Started.</span>",
+        sub: "At Bradicoin Loan, we believe that access to the financial future should be simple and for everyone. Unlike other platforms, you don't need to already own Bradicoin to apply for a loan. Our innovative methodology allows you to use different forms of collateral and receive the loan value directly in Bradicoin. Sign up now, choose the amount you want, and receive your Bradicoins in just a few minutes. It's fast, secure, transparent, and made for you.",
+        cta: "I WANT TO APPLY FOR MY LOAN NOW",
+        s2: "Why Have Thousands of People Already Chosen Bradicoin Loan?",
+        s3: "The Differential That Makes Bradicoin Loan the Best Choice",
+        s4: "How to Apply for a Loan in Bradicoin — Complete Step-by-Step Guide",
+        s5: "Advantages That Make a Difference in Your Financial Life",
+        s6: "The Bradicoin Loan is for You If...",
+        s7: "Frequently Asked Questions about Bradicoin Loan",
+        s8: "What Our Customers Are Saying",
+        s9: "Bradicoin Loan Process Summary",
+        final: "Ready to Turn Your Plans into Reality?"
+      },
+      pt: {
+        hero: "Realize seus projetos com um <span>Empréstimo Bradicoin</span>.<br><span style='font-size:1.4rem;background:none;color:#a5f3fc;text-shadow:0 0 40px rgba(0,255,255,0.15);'>Você não precisa ter Bradicoin para começar.</span>",
+        sub: "No Bradicoin Loan, acreditamos que o acesso ao futuro financeiro deve ser simples e para todos. Ao contrário de outras plataformas, você não precisa já possuir Bradicoin para solicitar um empréstimo. Nossa metodologia inovadora permite que você use diferentes formas de garantia e receba o valor do empréstimo diretamente em Bradicoin. Cadastre-se agora, escolha o valor que deseja e receba seus Bradicoins em poucos minutos. É rápido, seguro, transparente e feito para você.",
+        cta: "QUERO SOLICITAR MEU EMPRÉSTIMO AGORA",
+        s2: "Por que milhares de pessoas já escolheram o Bradicoin Loan?",
+        s3: "O diferencial que torna o Bradicoin Loan a melhor escolha",
+        s4: "Como solicitar um empréstimo em Bradicoin — Guia passo a passo completo",
+        s5: "Vantagens que fazem a diferença na sua vida financeira",
+        s6: "O Bradicoin Loan é para você se...",
+        s7: "Perguntas Frequentes sobre o Bradicoin Loan",
+        s8: "O que nossos clientes estão dizendo",
+        s9: "Resumo do Processo Bradicoin Loan",
+        final: "Pronto para transformar seus planos em realidade?"
+      },
+      es: {
+        hero: "Logra tus proyectos con un <span>Préstamo Bradicoin</span>.<br><span style='font-size:1.4rem;background:none;color:#a5f3fc;text-shadow:0 0 40px rgba(0,255,255,0.15);'>No necesitas tener Bradicoin para empezar.</span>",
+        sub: "En Bradicoin Loan, creemos que el acceso al futuro financiero debe ser simple y para todos. A diferencia de otras plataformas, no necesitas ya poseer Bradicoin para solicitar un préstamo. Nuestra metodología innovadora te permite usar diferentes formas de garantía y recibir el valor del préstamo directamente en Bradicoin. Regístrate ahora, elige la cantidad que deseas y recibe tus Bradicoins en pocos minutos. Es rápido, seguro, transparente y hecho para ti.",
+        cta: "QUIERO SOLICITAR MI PRÉSTAMO AHORA",
+        s2: "¿Por qué miles de personas ya eligieron Bradicoin Loan?",
+        s3: "El diferencial que hace de Bradicoin Loan la mejor opción",
+        s4: "Cómo solicitar un préstamo en Bradicoin — Guía paso a paso completa",
+        s5: "Ventajas que marcan la diferencia en tu vida financiera",
+        s6: "Bradicoin Loan es para ti si...",
+        s7: "Preguntas Frecuentes sobre Bradicoin Loan",
+        s8: "Lo que dicen nuestros clientes",
+        s9: "Resumen del Proceso Bradicoin Loan",
+        final: "¿Listo para convertir tus planes en realidad?"
+      },
+      ar: {
+        hero: "حقق مشاريعك مع <span>قرض براديكوين</span>.<br><span style='font-size:1.4rem;background:none;color:#a5f3fc;text-shadow:0 0 40px rgba(0,255,255,0.15);'>لا تحتاج إلى امتلاك براديكوين للبدء.</span>",
+        sub: "في براديكوين لون، نؤمن بأن الوصول إلى المستقبل المالي يجب أن يكون بسيطًا ومتاحًا للجميع. على عكس المنصات الأخرى، لا تحتاج إلى امتلاك براديكوين مسبقًا لتقديم طلب قرض. تتيح لك منهجيتنا المبتكرة استخدام أشكال مختلفة من الضمانات واستلام قيمة القرض مباشرةً بالبراديكوين. سجل الآن، اختر المبلغ الذي تريده، واستلم براديكوين في دقائق. إنه سريع، آمن، شفاف، ومصمم من أجلك.",
+        cta: "أريد التقدم بطلب القرض الآن",
+        s2: "لماذا اختار الآلاف من الناس بالفعل براديكوين لون؟",
+        s3: "الفارق الذي يجعل براديكوين لون الخيار الأفضل",
+        s4: "كيفية التقدم بطلب قرض بالبراديكوين — دليل خطوة بخطوة كامل",
+        s5: "مزايا تحدث فرقًا في حياتك المالية",
+        s6: "براديكوين لون مناسب لك إذا...",
+        s7: "الأسئلة الشائعة حول براديكوين لون",
+        s8: "ماذا يقول عملاؤنا",
+        s9: "ملخص عملية براديكوين لون",
+        final: "هل أنت مستعد لتحويل خططك إلى واقع؟"
+      }
     };
     const t = dict[lang] || dict.en;
-    if (welcome) welcome.textContent = t.welcome;
+    const hero = document.querySelector('.welcome-title');
+    if (hero) hero.innerHTML = `<i class="fas fa-hand-holding-usd" style="color: #67e8f9; margin-right: 12px;"></i> ${t.hero}`;
+    const sub = document.querySelector('.welcome-sub');
     if (sub) sub.innerHTML = `<i class="fas fa-robot"></i> ${t.sub}`;
-    if (infoTitle) infoTitle.innerHTML = `<i class="fas fa-rocket" style="color: #2dd4bf;"></i> ${t.info}`;
-    if (formTitle) formTitle.innerHTML = `<i class="fas fa-pen-fancy"></i> ${t.form}`;
-    if (btn) btn.innerHTML = `<i class="fas fa-rocket"></i> ${t.btn}`;
-    if (footnote) footnote.innerHTML = `<i class="fas fa-lock"></i> ${t.foot}`;
+    const cta = document.querySelector('.btn-cta');
+    if (cta) cta.innerHTML = `<i class="fas fa-rocket"></i> ${t.cta}`;
+    const titles = document.querySelectorAll('.section-title');
+    if (titles.length >= 8) {
+      titles[0].innerHTML = `<i class="fas fa-question-circle"></i> ${t.s2}`;
+      titles[1].innerHTML = `<i class="fas fa-fire" style="color: #f472b6;"></i> ${t.s3}`;
+      titles[2].innerHTML = `<i class="fas fa-list-ol"></i> ${t.s4}`;
+      titles[3].innerHTML = `<i class="fas fa-star" style="color: #fcd34d;"></i> ${t.s5}`;
+      titles[4].innerHTML = `<i class="fas fa-users"></i> ${t.s6}`;
+      titles[5].innerHTML = `<i class="fas fa-question-circle"></i> ${t.s7}`;
+      titles[6].innerHTML = `<i class="fas fa-comment-dots"></i> ${t.s8}`;
+      titles[7].innerHTML = `<i class="fas fa-project-diagram"></i> ${t.s9}`;
+      const finalTitle = document.querySelector('.main-section:last-child .section-title');
+      if (finalTitle) finalTitle.innerHTML = `<i class="fas fa-rocket" style="color: #2dd4bf;"></i> ${t.final}`;
+    }
   }
 </script>
-
-<!-- footer (minimal) -->
-<footer class="site-footer" style="max-width:1320px; width:100%; margin:1.8rem auto 1.2rem; padding:1.2rem 1.5rem 0.8rem; border-top:1px solid rgba(0,255,255,0.1); display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem 2rem; color:#8a9bb8; font-size:0.9rem;">
-  <div class="footer-links" style="display:flex; gap:2rem; flex-wrap:wrap;">
-    <a href="#" onclick="alert('About Bradi Loan – next‑gen crypto lending')" style="color:#b9c8e6; text-decoration:none; display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-info-circle"></i> About</a>
-    <a href="#" onclick="alert('Privacy policy – data secured on-chain')" style="color:#b9c8e6; text-decoration:none; display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-lock"></i> Privacy</a>
-    <a href="#" onclick="alert('Contact – support@bradiloan.io')" style="color:#b9c8e6; text-decoration:none; display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-envelope"></i> Contact</a>
-    <a href="https://www.bradicoin.com" target="_blank" style="color:#b9c8e6; text-decoration:none; display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-external-link-alt"></i> Bradicoin</a>
-  </div>
-  <div class="footer-copy" style="font-size:0.8rem; color:#4b6080;"><i class="fas fa-copyright"></i> 2026 Bradi Loan · built on <i class="fas fa-cube"></i> Bradicoin</div>
-</footer>
 </body>
 </html>
