@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bradi · Futurist Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0015;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: radial-gradient(circle at 20% 30%, #0b0020, #03000a);
+      padding: 1rem;
+    }
+    /* ----- MAIN WRAPPER (same as before) ----- */
+    .loan-wrapper {
+      max-width: 1320px;
+      width: 100%;
+      background: rgba(8, 0, 25, 0.7);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 3.5rem 3.5rem 2.5rem 2.5rem;
+      padding: 2.2rem 2.8rem 1.8rem;
+      box-shadow: 0 0 60px rgba(0, 255, 255, 0.25), 0 0 120px rgba(138, 43, 226, 0.3);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .loan-wrapper::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: -20%;
+      width: 160%;
+      height: 160%;
+      background: radial-gradient(circle at 70% 30%, rgba(0, 255, 255, 0.03), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .loan-wrapper > * {
+      position: relative;
+      z-index: 2;
+    }
+    /* TOP BAR */
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.2rem 0.8rem;
+      border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+      padding-bottom: 1.3rem;
+      margin-bottom: 2rem;
+    }
+    .brand-orbit {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 2.3rem;
+      letter-spacing: 0.08em;
+      background: linear-gradient(135deg, #a5f3fc, #c084fc, #f472b6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 25px rgba(0, 255, 255, 0.5), 0 0 60px #8b5cf6;
+    }
+    .brand-orbit i {
+      margin-right: 10px;
+      color: #22d3ee;
+      text-shadow: 0 0 20px cyan;
+    }
+    .auth-translate-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem 1.5rem;
+    }
+    .auth-buttons {
+      display: flex;
+      gap: 0.8rem;
+    }
+    .auth-btn {
+      background: transparent;
+      border: 1.5px solid rgba(0, 255, 255, 0.5);
+      padding: 0.5rem 1.6rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #e0f2fe;
+      transition: all 0.25s;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+      background: rgba(0, 255, 255, 0.03);
+      letter-spacing: 0.5px;
+    }
+    .auth-btn i {
+      margin-right: 8px;
+    }
+    .auth-btn:hover {
+      background: rgba(0, 255, 255, 0.15);
+      border-color: #a78bfa;
+      box-shadow: 0 0 35px #a78bfa;
+      color: white;
+      transform: scale(1.03);
+    }
+    .auth-btn.signup {
+      background: linear-gradient(145deg, #6d28d9, #3b0764);
+      border-color: #8b5cf6;
+      color: white;
+    }
+    .auth-btn.signup:hover {
+      background: linear-gradient(145deg, #7c3aed, #4c1d95);
+      box-shadow: 0 0 40px #7c3aed;
+    }
+    .lang-selector {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 60px;
+      padding: 0.25rem 0.9rem 0.25rem 1.2rem;
+      border: 1px solid rgba(0, 255, 255, 0.25);
+      backdrop-filter: blur(4px);
+    }
+    .lang-selector i {
+      color: #67e8f9;
+      font-size: 1rem;
+    }
+    .lang-selector select {
+      background: transparent;
+      border: none;
+      color: #d8b4fe;
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.4rem 0.1rem;
+      outline: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+    .lang-selector select option {
+      background: #1e002b;
+      color: #e0e7ff;
+    }
+    /* ----- DASHBOARD (hidden by default) ----- */
+    #dashboard {
+      display: none;
+      margin-top: 1rem;
+    }
+    #dashboard.active {
+      display: block;
+    }
+    .dash-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .dash-card {
+      background: rgba(0, 10, 35, 0.55);
+      backdrop-filter: blur(10px);
+      border-radius: 2rem;
+      padding: 1.8rem 2rem;
+      border: 1px solid rgba(0, 255, 255, 0.15);
+      box-shadow: 0 0 40px rgba(100, 0, 255, 0.15);
+      transition: 0.2s;
+    }
+    .dash-card:hover {
+      border-color: #a78bfa;
+      box-shadow: 0 0 60px rgba(138, 43, 226, 0.25);
+    }
+    .dash-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      color: #c4b5fd;
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border-bottom: 1px solid rgba(0,255,255,0.1);
+      padding-bottom: 0.7rem;
+    }
+    .dash-card h3 i {
+      color: #2dd4bf;
+    }
+    .dash-card .input-group {
+      margin-bottom: 1rem;
+    }
+    .dash-card .input-group label {
+      color: #b9d0f0;
+      font-weight: 500;
+      font-size: 0.8rem;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .dash-card .input-group input,
+    .dash-card .input-group select,
+    .dash-card .input-group textarea {
+      width: 100%;
+      padding: 0.6rem 1rem;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1.5px solid rgba(0, 255, 255, 0.15);
+      border-radius: 40px;
+      color: #f0f0ff;
+      font-size: 0.9rem;
+      outline: none;
+      transition: 0.25s;
+      font-family: 'Inter', sans-serif;
+    }
+    .dash-card .input-group textarea {
+      border-radius: 20px;
+      resize: vertical;
+      min-height: 60px;
+    }
+    .dash-card .input-group input:focus,
+    .dash-card .input-group textarea:focus {
+      border-color: #a78bfa;
+      box-shadow: 0 0 25px #6d28d9;
+    }
+    .dash-btn {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      border: none;
+      padding: 0.6rem 1.8rem;
+      border-radius: 60px;
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 0 30px rgba(37, 99, 235, 0.2);
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .dash-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 50px #7c3aed;
+    }
+    .dash-btn.outline {
+      background: transparent;
+      border: 1.5px solid rgba(0, 255, 255, 0.4);
+      box-shadow: none;
+    }
+    .dash-btn.outline:hover {
+      background: rgba(0, 255, 255, 0.05);
+      border-color: #a78bfa;
+    }
+    .dash-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+    }
+    .kyc-upload {
+      border: 2px dashed rgba(0, 255, 255, 0.2);
+      border-radius: 1.5rem;
+      padding: 1.2rem;
+      text-align: center;
+      color: #8a9bb8;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .kyc-upload:hover {
+      border-color: #a78bfa;
+      background: rgba(0, 255, 255, 0.03);
+    }
+    .kyc-upload i {
+      font-size: 2rem;
+      color: #67e8f9;
+      margin-bottom: 0.4rem;
+    }
+    .logout-area {
+      margin-top: 1.8rem;
+      display: flex;
+      justify-content: flex-end;
+      border-top: 1px solid rgba(0,255,255,0.08);
+      padding-top: 1.2rem;
+    }
+    .logout-btn {
+      background: rgba(255, 0, 100, 0.15);
+      border: 1px solid rgba(255, 0, 100, 0.3);
+      color: #f472b6;
+      padding: 0.5rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .logout-btn:hover {
+      background: rgba(255, 0, 100, 0.25);
+      box-shadow: 0 0 40px rgba(255, 0, 100, 0.2);
+      transform: scale(1.02);
+    }
+    /* hide main content when dashboard active */
+    #mainContent.hidden {
+      display: none;
+    }
+    /* modal overlay (logout confirm) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-box {
+      background: rgba(10, 0, 30, 0.95);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 2.5rem;
+      padding: 2.5rem 2.8rem 2.8rem;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 0 80px rgba(138, 43, 226, 0.4);
+      text-align: center;
+    }
+    .modal-box h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #f0f4ff;
+      margin-bottom: 0.8rem;
+    }
+    .modal-box p {
+      color: #b9c8e6;
+      margin-bottom: 2rem;
+    }
+    .modal-box .modal-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .modal-box .modal-actions button {
+      padding: 0.6rem 2.2rem;
+      border-radius: 60px;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      transition: 0.2s;
+    }
+    .modal-box .modal-actions .btn-yes {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+      box-shadow: 0 0 30px rgba(37, 99, 235, 0.3);
+    }
+    .modal-box .modal-actions .btn-yes:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 50px #7c3aed;
+    }
+    .modal-box .modal-actions .btn-no {
+      background: transparent;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      color: #b9c8e6;
+    }
+    .modal-box .modal-actions .btn-no:hover {
+      border-color: #a78bfa;
+      color: white;
+    }
+    @media (max-width: 900px) {
+      .dash-grid { grid-template-columns: 1fr; }
+      .top-bar { flex-direction: column; align-items: stretch; }
+      .auth-translate-wrap { justify-content: space-between; flex-wrap: wrap; }
+      .loan-wrapper { padding: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- MAIN WRAPPER -->
+<div class="loan-wrapper" id="appWrapper">
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="brand-orbit"><i class="fas fa-coins"></i> BRADI·LOAN</div>
+    <div class="auth-translate-wrap">
+      <div class="auth-buttons">
+        <button class="auth-btn" id="loginBtn"><i class="fas fa-key"></i> Login</button>
+        <button class="auth-btn signup" id="signupBtn"><i class="fas fa-user-plus"></i> Sign Up</button>
+      </div>
+      <div class="lang-selector">
+        <i class="fas fa-globe"></i>
+        <select id="langSelect" onchange="translatePage(this.value)">
+          <option value="en">🇬🇧 English</option>
+          <option value="pt">🇧🇷 Português</option>
+          <option value="es">🇪🇸 Español</option>
+          <option value="ar">🇸🇦 العربية</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT (visible before login) -->
+  <div id="mainContent">
+    <div class="welcome-section">
+      <div class="welcome-title"><i class="fas fa-hand-holding-usd" style="color: #67e8f9; margin-right: 12px;"></i> Welcome to <span>Bradicoin</span> Loan</div>
+      <div class="welcome-sub"><i class="fas fa-robot"></i> Future‑ready lending · Borrow Bradicoin (BRC) for diverse use cases</div>
+    </div>
+    <div class="loan-grid" style="display:grid; grid-template-columns:1.2fr 0.9fr; gap:2.5rem; margin-top:1.5rem;">
+      <div class="info-panel" style="background:rgba(0,10,30,0.45); border-radius:2.2rem; padding:2rem; border:1px solid rgba(0,255,255,0.12);">
+        <h3 style="font-family:'Orbitron',sans-serif; color:#a5f3fc; font-size:1.5rem; margin-bottom:1.5rem;"><i class="fas fa-rocket" style="color:#2dd4bf;"></i> Bradicoin loan</h3>
+        <div class="info-item" style="display:flex; gap:1.2rem; margin-bottom:1.5rem; color:#ddd6fe;"><i class="fas fa-bolt" style="font-size:1.6rem; color:#2dd4bf;"></i><div><strong style="color:#bae6fd;">Flash loans · 0% collateral</strong><p style="color:#cbd5e1;">Instant BRC liquidity for trading, development, or personal projects. Repay within 24h.</p></div></div>
+        <div class="info-item" style="display:flex; gap:1.2rem; margin-bottom:1.5rem; color:#ddd6fe;"><i class="fas fa-chart-line" style="font-size:1.6rem; color:#2dd4bf;"></i><div><strong style="color:#bae6fd;">Variable APR · stake & earn</strong><p style="color:#cbd5e1;">Rates from 2.5% to 12% depending on loan term and BRC staking history.</p></div></div>
+        <div class="info-item" style="display:flex; gap:1.2rem; margin-bottom:1.5rem; color:#ddd6fe;"><i class="fas fa-shield-alt" style="font-size:1.6rem; color:#2dd4bf;"></i><div><strong style="color:#bae6fd;">Secure & transparent</strong><p style="color:#cbd5e1;">All loans recorded on Bradicoin blockchain. No hidden fees. <span class="badge-coin" style="background:rgba(0,255,255,0.08); border-radius:60px; padding:0.2rem 1.4rem; border:1px solid #22d3ee; color:#7dd3fc; font-family:'Orbitron',sans-serif;">BRC‑20</span></p></div></div>
+        <div style="margin-top:1.2rem; font-size:0.9rem; color:#9aa9c9;"><i class="fas fa-link"></i> Powered by <strong style="color:#7dd3fc;">Bradicoin</strong> <a href="https://www.bradicoin.com" target="_blank" style="color:#a78bfa; text-decoration:none; border-bottom:1px dotted #a78bfa;">www.bradicoin.com</a></div>
+      </div>
+      <div class="loan-form" style="background:rgba(0,10,35,0.55); border-radius:2.5rem; padding:2rem 2.2rem 2.4rem; border:1px solid rgba(0,255,255,0.2);">
+        <h3 style="font-family:'Orbitron',sans-serif; color:#c4b5fd; font-size:1.4rem; margin-bottom:2rem;"><i class="fas fa-pen-fancy" style="color:#2dd4bf;"></i> Request loan</h3>
+        <form onsubmit="event.preventDefault(); alert('🚀 Loan request submitted! (simulated)');">
+          <div class="input-group" style="margin-bottom:1.4rem;"><label style="color:#b9d0f0; font-weight:500; font-size:0.9rem;"><i class="fas fa-user-astronaut"></i> Full name</label><input type="text" placeholder="e.g. Satoshi Nakamoto" value="Alex Rivera" style="width:100%; padding:0.8rem 1.2rem; background:rgba(0,0,0,0.45); border:1.5px solid rgba(0,255,255,0.15); border-radius:60px; color:#f0f0ff; font-size:0.95rem; outline:none;" /></div>
+          <div class="input-group" style="margin-bottom:1.4rem;"><label style="color:#b9d0f0; font-weight:500; font-size:0.9rem;"><i class="fas fa-envelope"></i> Email / BRC wallet</label><input type="email" placeholder="your@bradicoin.com" value="alex@bradicoin.com" style="width:100%; padding:0.8rem 1.2rem; background:rgba(0,0,0,0.45); border:1.5px solid rgba(0,255,255,0.15); border-radius:60px; color:#f0f0ff; font-size:0.95rem; outline:none;" /></div>
+          <div class="input-group" style="margin-bottom:1.4rem;"><label style="color:#b9d0f0; font-weight:500; font-size:0.9rem;"><i class="fas fa-coins"></i> Amount (BRC)</label><input type="number" placeholder="Min 50 BRC" value="2500" style="width:100%; padding:0.8rem 1.2rem; background:rgba(0,0,0,0.45); border:1.5px solid rgba(0,255,255,0.15); border-radius:60px; color:#f0f0ff; font-size:0.95rem; outline:none;" /></div>
+          <div class="input-group" style="margin-bottom:1.4rem;"><label style="color:#b9d0f0; font-weight:500; font-size:0.9rem;"><i class="fas fa-calendar-alt"></i> Loan term</label>
+            <select style="width:100%; padding:0.8rem 1.2rem; background:rgba(0,0,0,0.45); border:1.5px solid rgba(0,255,255,0.15); border-radius:60px; color:#f0f0ff; font-size:0.95rem; outline:none;"><option>7 days (2.5% APR)</option><option selected>30 days (4.2% APR)</option><option>60 days (6.8% APR)</option><option>180 days (12% APR)</option></select>
+          </div>
+          <div class="input-group" style="margin-bottom:1.4rem;"><label style="color:#b9d0f0; font-weight:500; font-size:0.9rem;"><i class="fas fa-comment"></i> Purpose</label><input type="text" placeholder="e.g. DeFi, NFT, business" value="DeFi yield farming" style="width:100%; padding:0.8rem 1.2rem; background:rgba(0,0,0,0.45); border:1.5px solid rgba(0,255,255,0.15); border-radius:60px; color:#f0f0ff; font-size:0.95rem; outline:none;" /></div>
+          <button class="loan-btn" type="submit" style="width:100%; padding:1rem; border:none; border-radius:60px; background:linear-gradient(135deg,#2563eb,#7c3aed,#a855f7); color:white; font-weight:700; font-size:1.2rem; font-family:'Orbitron',sans-serif; box-shadow:0 0 50px rgba(37,99,235,0.3); cursor:pointer;"><i class="fas fa-rocket"></i> Get Bradicoin loan</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DASHBOARD (hidden) ===== -->
+  <div id="dashboard">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem;">
+      <h2 style="font-family:'Orbitron',sans-serif; color:#c4b5fd; font-size:2rem;"><i class="fas fa-tachometer-alt" style="color:#2dd4bf;"></i> Dashboard</h2>
+      <span style="color:#8a9bb8; font-size:0.9rem;"><i class="fas fa-user-astronaut"></i> Alex Rivera</span>
+    </div>
+
+    <div class="dash-grid">
+      <!-- CONFIGURATION -->
+      <div class="dash-card">
+        <h3><i class="fas fa-cog"></i> Configuration</h3>
+        <div class="input-group"><label>Default currency</label><input type="text" value="BRC" /></div>
+        <div class="input-group"><label>Language</label><input type="text" value="English" /></div>
+        <div class="input-group"><label>Notification</label><input type="text" value="Email + Push" /></div>
+        <button class="dash-btn" onclick="alert('⚙️ Settings saved (demo)')"><i class="fas fa-save"></i> Save</button>
+      </div>
+
+      <!-- KYC -->
+      <div class="dash-card">
+        <h3><i class="fas fa-id-card"></i> KYC Verification</h3>
+        <p style="color:#b9c8e6; font-size:0.9rem; margin-bottom:1rem;">Upload your documents to unlock full loan limits.</p>
+        <div class="kyc-upload" onclick="document.getElementById('fileUpload').click();">
+          <i class="fas fa-cloud-upload-alt"></i>
+          <div>Click to upload ID / Passport</div>
+          <input type="file" id="fileUpload" style="display:none;" accept="image/*,.pdf" />
+        </div>
+        <div class="kyc-upload" style="margin-top:0.8rem;" onclick="document.getElementById('fileUpload2').click();">
+          <i class="fas fa-file-invoice"></i>
+          <div>Proof of address</div>
+          <input type="file" id="fileUpload2" style="display:none;" accept="image/*,.pdf" />
+        </div>
+        <button class="dash-btn" style="margin-top:1rem;" onclick="alert('📤 KYC documents submitted (simulated)')"><i class="fas fa-check-circle"></i> Submit KYC</button>
+      </div>
+
+      <!-- CREATE LOAN -->
+      <div class="dash-card" style="grid-column: 1 / 2;">
+        <h3><i class="fas fa-hand-holding-usd"></i> Create Loan</h3>
+        <div class="input-group"><label>Loan Title</label><input type="text" placeholder="e.g. DeFi expansion" value="Yield farming pool" /></div>
+        <div class="input-group"><label>Description</label><textarea placeholder="Describe your loan purpose">To provide liquidity for BRC/ETH pool.</textarea></div>
+        <div class="input-group"><label>Interest Rate (%)</label><input type="number" step="0.1" value="4.2" /></div>
+        <div class="input-group"><label>Amount (BRD)</label><input type="number" value="12500" /></div>
+        <button class="dash-btn" onclick="alert('✅ Loan created (demo)')"><i class="fas fa-plus-circle"></i> Create Loan</button>
+      </div>
+
+      <!-- TURBO LOAN -->
+      <div class="dash-card">
+        <h3><i class="fas fa-bolt" style="color:#f472b6;"></i> Turbo Loan</h3>
+        <p style="color:#b9c8e6; font-size:0.9rem; margin-bottom:0.8rem;">Instant approval · up to 5,000 BRC · 0% fee</p>
+        <div class="input-group"><label>Amount (BRC)</label><input type="number" value="2500" /></div>
+        <div class="input-group"><label>Repay in</label>
+          <select><option>24 hours</option><option>48 hours</option><option>7 days</option></select>
+        </div>
+        <button class="dash-btn" style="background:linear-gradient(135deg,#d946ef,#7c3aed);" onclick="alert('⚡ Turbo loan requested (demo)')"><i class="fas fa-rocket"></i> Get Turbo Loan</button>
+      </div>
+    </div>
+
+    <!-- LOGOUT -->
+    <div class="logout-area">
+      <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LOGOUT CONFIRM MODAL ===== -->
+<div class="modal-overlay" id="logoutModal">
+  <div class="modal-box">
+    <h2><i class="fas fa-question-circle" style="color:#f472b6;"></i> Confirm</h2>
+    <p>Are you sure you want to logout?</p>
+    <div class="modal-actions">
+      <button class="btn-yes" id="logoutYes">Yes</button>
+      <button class="btn-no" id="logoutNo">No</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LOGIN / SIGNUP MODAL (free test) ===== -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal-box" style="max-width:440px;">
+    <button class="close-modal" id="closeAuthModal" style="position:absolute; top:1rem; right:1.5rem; font-size:1.8rem; color:#a5b4fc; cursor:pointer; background:none; border:none;">&times;</button>
+    <div id="authFormContainer">
+      <h2 style="font-family:'Orbitron',sans-serif; color:#c4b5fd; font-size:1.8rem; text-align:center; margin-bottom:1.8rem;"><i class="fas fa-sign-in-alt" style="color:#22d3ee;"></i> Login</h2>
+      <div class="input-group"><label>Email</label><input type="email" placeholder="test@bradicoin.com" id="loginEmailTest" value="demo@bradicoin.com" /></div>
+      <div class="input-group"><label>Password</label><input type="password" placeholder="••••••••" id="loginPassTest" value="123456" /></div>
+      <button class="modal-btn" id="loginTestBtn" style="width:100%; padding:0.9rem; border:none; border-radius:60px; background:linear-gradient(135deg,#2563eb,#7c3aed); color:white; font-weight:700; font-size:1.1rem; font-family:'Orbitron',sans-serif; cursor:pointer; box-shadow:0 0 40px rgba(37,99,235,0.25);"><i class="fas fa-arrow-right"></i> Sign In</button>
+      <div style="text-align:center; margin-top:1rem; color:#8a9bb8; font-size:0.9rem;">Don't have an account? <span id="switchToSignup" style="color:#a78bfa; cursor:pointer; font-weight:600; border-bottom:1px dashed #a78bfa;">Sign Up</span></div>
+    </div>
+    <div id="signupFormContainer" style="display:none;">
+      <h2 style="font-family:'Orbitron',sans-serif; color:#c4b5fd; font-size:1.8rem; text-align:center; margin-bottom:1.8rem;"><i class="fas fa-user-plus" style="color:#22d3ee;"></i> Sign Up</h2>
+      <div class="input-group"><label>Email</label><input type="email" placeholder="you@example.com" id="signupEmailTest" /></div>
+      <div class="input-group"><label>Password</label><input type="password" placeholder="Use @, #, $, &amp;" id="signupPassTest" /></div>
+      <div class="input-group"><label>Repeat Password</label><input type="password" placeholder="Confirm" id="signupPassRepeatTest" /></div>
+      <button class="modal-btn" id="signupTestBtn" style="width:100%; padding:0.9rem; border:none; border-radius:60px; background:linear-gradient(135deg,#2563eb,#7c3aed); color:white; font-weight:700; font-size:1.1rem; font-family:'Orbitron',sans-serif; cursor:pointer;"><i class="fas fa-user-check"></i> Create Account</button>
+      <div style="text-align:center; margin-top:1rem; color:#8a9bb8; font-size:0.9rem;">Already have an account? <span id="switchToLogin" style="color:#a78bfa; cursor:pointer; font-weight:600; border-bottom:1px dashed #a78bfa;">Login</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    // DOM refs
+    const mainContent = document.getElementById('mainContent');
+    const dashboard = document.getElementById('dashboard');
+    const authModal = document.getElementById('authModal');
+    const loginBtn = document.getElementById('loginBtn');
+    const signupBtn = document.getElementById('signupBtn');
+    const closeAuth = document.getElementById('closeAuthModal');
+    const switchToSignup = document.getElementById('switchToSignup');
+    const switchToLogin = document.getElementById('switchToLogin');
+    const loginTestBtn = document.getElementById('loginTestBtn');
+    const signupTestBtn = document.getElementById('signupTestBtn');
+    const authForm = document.getElementById('authFormContainer');
+    const signupForm = document.getElementById('signupFormContainer');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const logoutModal = document.getElementById('logoutModal');
+    const logoutYes = document.getElementById('logoutYes');
+    const logoutNo = document.getElementById('logoutNo');
+
+    // show login modal
+    function openAuthModal(mode) {
+      authModal.classList.add('active');
+      if (mode === 'signup') {
+        authForm.style.display = 'none';
+        signupForm.style.display = 'block';
+      } else {
+        authForm.style.display = 'block';
+        signupForm.style.display = 'none';
+      }
+    }
+    function closeAuthModal() {
+      authModal.classList.remove('active');
+    }
+
+    loginBtn.addEventListener('click', (e) => { e.preventDefault(); openAuthModal('login'); });
+    signupBtn.addEventListener('click', (e) => { e.preventDefault(); openAuthModal('signup'); });
+    closeAuth.addEventListener('click', closeAuthModal);
+    authModal.addEventListener('click', (e) => { if (e.target === authModal) closeAuthModal(); });
+    switchToSignup.addEventListener('click', () => openAuthModal('signup'));
+    switchToLogin.addEventListener('click', () => openAuthModal('login'));
+
+    // login test: show dashboard
+    loginTestBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      closeAuthModal();
+      // hide main, show dashboard
+      mainContent.style.display = 'none';
+      dashboard.classList.add('active');
+    });
+
+    signupTestBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      // simple signup simulation
+      const p1 = document.getElementById('signupPassTest').value;
+      const p2 = document.getElementById('signupPassRepeatTest').value;
+      if (p1 !== p2) { alert('Passwords do not match.'); return; }
+      if (!p1.match(/[@#$&]/)) { alert('Password must contain at least one of: @ # $ &'); return; }
+      alert('✅ Account created! (demo)');
+      closeAuthModal();
+      mainContent.style.display = 'none';
+      dashboard.classList.add('active');
+    });
+
+    // logout flow
+    logoutBtn.addEventListener('click', () => {
+      logoutModal.classList.add('active');
+    });
+
+    logoutYes.addEventListener('click', () => {
+      logoutModal.classList.remove('active');
+      dashboard.classList.remove('active');
+      mainContent.style.display = 'block';
+      // reset to main view
+    });
+
+    logoutNo.addEventListener('click', () => {
+      logoutModal.classList.remove('active');
+    });
+
+    // close logout modal on overlay click
+    logoutModal.addEventListener('click', (e) => {
+      if (e.target === logoutModal) logoutModal.classList.remove('active');
+    });
+
+    // ESC for modals
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (authModal.classList.contains('active')) closeAuthModal();
+        if (logoutModal.classList.contains('active')) logoutModal.classList.remove('active');
+      }
+    });
+
+    // close auth on ESC handled above
+  })();
+
+  // translator demo
+  function translatePage(lang) {
+    const welcome = document.querySelector('.welcome-title span');
+    const sub = document.querySelector('.welcome-sub');
+    const infoTitle = document.querySelector('.info-panel h3');
+    const formTitle = document.querySelector('.loan-form h3');
+    const btn = document.querySelector('.loan-btn');
+    const footnote = document.querySelector('.footnote');
+    const dict = {
+      en: { welcome: 'Bradicoin', sub: 'Future‑ready lending · Borrow Bradicoin (BRC) for diverse use cases', info: 'Bradicoin loan', form: 'Request loan', btn: 'Get Bradicoin loan', foot: 'secured by Bradicoin smart contracts · rate 4.2%' },
+      pt: { welcome: 'Bradicoin', sub: 'Empréstimo futurista · Peça Bradicoin (BRC) para diversos usos', info: 'Empréstimo Bradicoin', form: 'Solicitar empréstimo', btn: 'Obter empréstimo Bradicoin', foot: 'protegido por smart contracts Bradicoin · taxa 4.2%' },
+      es: { welcome: 'Bradicoin', sub: 'Préstamo futurista · Pide Bradicoin (BRC) para diversos usos', info: 'Préstamo Bradicoin', form: 'Solicitar préstamo', btn: 'Obtener préstamo Bradicoin', foot: 'asegurado por smart contracts Bradicoin · tasa 4.2%' },
+      ar: { welcome: 'براديكوين', sub: 'إقراض مستقبلي · اقترض براديكوين (BRC) لاستخدامات متنوعة', info: 'قرض براديكوين', form: 'طلب قرض', btn: 'احصل على قرض براديكوين', foot: 'مؤمن بعقود براديكوين الذكية · معدل 4.2%' }
+    };
+    const t = dict[lang] || dict.en;
+    if (welcome) welcome.textContent = t.welcome;
+    if (sub) sub.innerHTML = `<i class="fas fa-robot"></i> ${t.sub}`;
+    if (infoTitle) infoTitle.innerHTML = `<i class="fas fa-rocket" style="color: #2dd4bf;"></i> ${t.info}`;
+    if (formTitle) formTitle.innerHTML = `<i class="fas fa-pen-fancy"></i> ${t.form}`;
+    if (btn) btn.innerHTML = `<i class="fas fa-rocket"></i> ${t.btn}`;
+    if (footnote) footnote.innerHTML = `<i class="fas fa-lock"></i> ${t.foot}`;
+  }
+</script>
+
+<!-- footer (minimal) -->
+<footer class="site-footer" style="max-width:1320px; width:100%; margin:1.8rem auto 1.2rem; padding:1.2rem 1.5rem 0.8rem; border-top:1px solid rgba(0,255,255,0.1); display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem 2rem; color:#8a9bb8; font-size:0.9rem;">
+  <div class="footer-links" style="display:flex; gap:2rem; flex-wrap:wrap;">
+    <a href="#" onclick="alert('About Bradi Loan – next‑gen crypto lending')" style="color:#b9c8e6; text-decoration:none; display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-info-circle"></i> About</a>
+    <a href="#" onclick="alert('Privacy policy – data secured on-chain')" style="color:#b9c8e6; text-decoration:none; display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-lock"></i> Privacy</a>
+    <a href="#" onclick="alert('Contact – support@bradiloan.io')" style="color:#b9c8e6; text-decoration:none; display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="https://www.bradicoin.com" target="_blank" style="color:#b9c8e6; text-decoration:none; display:inline-flex; align-items:center; gap:6px;"><i class="fas fa-external-link-alt"></i> Bradicoin</a>
+  </div>
+  <div class="footer-copy" style="font-size:0.8rem; color:#4b6080;"><i class="fas fa-copyright"></i> 2026 Bradi Loan · built on <i class="fas fa-cube"></i> Bradicoin</div>
+</footer>
+</body>
+</html>
