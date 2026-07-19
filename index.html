@@ -361,62 +361,224 @@
       .auth-buttons { flex-wrap: wrap; }
       .brand-orbit { font-size: 1.6rem; }
     }
-    /* DASHBOARD - ORGANIZED */
+    /* DASHBOARD - NOVO COM SIDEBAR */
     #dashboard { display: none; margin-top: 1rem; }
-    #dashboard.active { display: block; }
+    #dashboard.active { display: flex; gap: 2rem; }
     #mainContent.hidden { display: none; }
-    .dash-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1.5rem;
-    }
-    .dash-card {
-      background: rgba(0, 10, 35, 0.55);
+
+    /* SIDEBAR */
+    .dash-sidebar {
+      width: 220px;
+      min-width: 180px;
+      background: rgba(0, 10, 35, 0.6);
       backdrop-filter: blur(10px);
       border-radius: 2rem;
-      padding: 1.5rem 1.8rem;
-      border: 1px solid rgba(0, 255, 255, 0.12);
-      box-shadow: 0 0 50px rgba(100, 0, 255, 0.1);
-      transition: 0.2s;
+      padding: 1.5rem 0.8rem;
+      border: 1px solid rgba(0, 255, 255, 0.08);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+      height: fit-content;
     }
-    .dash-card:hover { border-color: #a78bfa; box-shadow: 0 0 70px rgba(138, 43, 226, 0.2); }
-    .dash-card h3 {
-      font-family: 'Orbitron', sans-serif;
+    .dash-sidebar .user-badge {
+      text-align: center;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(0,255,255,0.06);
+      margin-bottom: 1.2rem;
+    }
+    .dash-sidebar .user-badge .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6d28d9, #2563eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.5rem;
+      font-size: 1.4rem;
+      color: white;
       font-weight: 700;
+      box-shadow: 0 0 30px rgba(37, 99, 235, 0.3);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .dash-sidebar .user-badge .avatar:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 50px rgba(37, 99, 235, 0.5);
+    }
+    .dash-sidebar .user-badge .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .dash-sidebar .user-badge .name {
+      font-family: 'Orbitron', sans-serif;
+      color: #f0f4ff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .dash-sidebar .user-badge .name:hover {
+      color: #a78bfa;
+    }
+    .dash-sidebar .user-badge .rank {
+      font-family: 'Orbitron', sans-serif;
+      color: #a78bfa;
+      font-size: 0.55rem;
+      background: rgba(0,0,0,0.3);
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      display: inline-block;
+      margin-top: 0.2rem;
+    }
+    .sidebar-menu {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar-menu li {
+      font-family: 'Orbitron', sans-serif;
+      padding: 0.5rem 0.8rem;
+      margin: 0.15rem 0;
+      border-radius: 40px;
+      color: #b9c8e6;
+      font-size: 0.55rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      letter-spacing: 0.02em;
+      border: 1px solid transparent;
+    }
+    .sidebar-menu li i {
+      width: 18px;
+      text-align: center;
+      color: #67e8f9;
+      font-size: 0.7rem;
+    }
+    .sidebar-menu li:hover {
+      background: rgba(0, 255, 255, 0.05);
+      border-color: rgba(0, 255, 255, 0.1);
+      color: #f0f4ff;
+    }
+    .sidebar-menu li.active {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(124, 58, 237, 0.2));
+      border-color: #a78bfa;
+      color: white;
+      box-shadow: 0 0 30px rgba(138, 43, 226, 0.1);
+    }
+    .sidebar-menu li.logout-item {
+      margin-top: 1.5rem;
+      border-top: 1px solid rgba(255,0,100,0.1);
+      padding-top: 1.2rem;
+      color: #f472b6;
+      cursor: pointer;
+    }
+    .sidebar-menu li.logout-item i { color: #f472b6; }
+
+    /* DASHBOARD CONTENT */
+    .dash-content {
+      flex: 1;
+      background: rgba(0, 10, 35, 0.3);
+      backdrop-filter: blur(8px);
+      border-radius: 2rem;
+      padding: 1.8rem 2rem;
+      border: 1px solid rgba(0, 255, 255, 0.06);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    }
+    .dash-content .page-title {
+      font-family: 'Orbitron', sans-serif;
       color: #c4b5fd;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      border-bottom: 1px solid rgba(0,255,255,0.06);
+      padding-bottom: 0.8rem;
+    }
+    .dash-content .page-title i { color: #2dd4bf; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: rgba(0, 10, 35, 0.5);
+      border-radius: 1.5rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(0, 255, 255, 0.06);
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .stat-card:hover {
+      border-color: #a78bfa;
+      box-shadow: 0 0 40px rgba(138, 43, 226, 0.15);
+      transform: translateY(-3px) scale(1.02);
+    }
+    .stat-card .number {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #f0f4ff;
+    }
+    .stat-card .label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.45rem;
+      color: #8a9bb8;
+      letter-spacing: 0.04em;
+      margin-top: 0.2rem;
+    }
+    .stat-card .icon { color: #2dd4bf; font-size: 1rem; margin-bottom: 0.2rem; }
+
+    .panel-card {
+      background: rgba(0, 10, 35, 0.4);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(0, 255, 255, 0.06);
+      margin-bottom: 1.5rem;
+    }
+    .panel-card h4 {
+      font-family: 'Orbitron', sans-serif;
+      color: #bae6fd;
+      font-size: 0.8rem;
       margin-bottom: 1rem;
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      border-bottom: 1px solid rgba(0,255,255,0.08);
-      padding-bottom: 0.6rem;
     }
-    .dash-card h3 i { color: #2dd4bf; }
-    .dash-card .input-group { margin-bottom: 0.8rem; }
-    .dash-card .input-group label {
+    .panel-card h4 i { color: #2dd4bf; }
+    .input-group {
+      margin-bottom: 0.8rem;
+    }
+    .input-group label {
       font-family: 'Orbitron', sans-serif;
       color: #b9d0f0;
       font-weight: 500;
-      font-size: 0.55rem;
+      font-size: 0.5rem;
       display: block;
       margin-bottom: 0.2rem;
       letter-spacing: 0.04em;
     }
-    .dash-card .input-group input, .dash-card .input-group select, .dash-card .input-group textarea {
+    .input-group input, .input-group select, .input-group textarea {
       font-family: 'Orbitron', sans-serif;
       width: 100%;
-      padding: 0.5rem 0.8rem;
+      padding: 0.4rem 0.8rem;
       background: rgba(0, 0, 0, 0.45);
       border: 1.5px solid rgba(0, 255, 255, 0.12);
       border-radius: 40px;
       color: #f0f0ff;
-      font-size: 0.6rem;
+      font-size: 0.55rem;
       outline: none;
       transition: 0.25s;
     }
-    .dash-card .input-group textarea { border-radius: 20px; resize: vertical; min-height: 50px; }
-    .dash-card .input-group input:focus, .dash-card .input-group textarea:focus {
+    .input-group textarea { border-radius: 20px; resize: vertical; min-height: 50px; }
+    .input-group input:focus, .input-group textarea:focus {
       border-color: #a78bfa;
       box-shadow: 0 0 30px #6d28d9;
     }
@@ -424,7 +586,7 @@
       font-family: 'Orbitron', sans-serif;
       background: linear-gradient(135deg, #2563eb, #7c3aed);
       border: none;
-      padding: 0.5rem 1.2rem;
+      padding: 0.5rem 1.8rem;
       border-radius: 60px;
       color: white;
       font-weight: 600;
@@ -435,51 +597,111 @@
       letter-spacing: 0.04em;
     }
     .dash-btn:hover { transform: scale(1.03); box-shadow: 0 0 60px #7c3aed; }
-    .dash-btn.green { background: linear-gradient(135deg, #059669, #10b981); box-shadow: 0 0 30px rgba(16, 185, 129, 0.2); }
-    .dash-btn.green:hover { box-shadow: 0 0 60px #10b981; }
-    .dash-btn.pink { background: linear-gradient(135deg, #db2777, #ec4899); box-shadow: 0 0 30px rgba(236, 72, 153, 0.2); }
-    .dash-btn.pink:hover { box-shadow: 0 0 60px #ec4899; }
-    .dash-btn.cyan { background: linear-gradient(135deg, #0891b2, #06b6d4); box-shadow: 0 0 30px rgba(6, 182, 212, 0.2); }
-    .dash-btn.cyan:hover { box-shadow: 0 0 60px #06b6d4; }
-    .dash-btn.amber { background: linear-gradient(135deg, #d97706, #f59e0b); box-shadow: 0 0 30px rgba(245, 158, 11, 0.2); }
-    .dash-btn.amber:hover { box-shadow: 0 0 60px #f59e0b; }
-    .dash-btn.purple { background: linear-gradient(135deg, #7c3aed, #8b5cf6); box-shadow: 0 0 30px rgba(124, 58, 237, 0.2); }
-    .dash-btn.purple:hover { box-shadow: 0 0 60px #8b5cf6; }
-    .dash-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
-    .logout-area { margin-top: 1.8rem; display: flex; justify-content: flex-end; border-top: 1px solid rgba(0,255,255,0.06); padding-top: 1.2rem; }
-    .logout-btn {
-      font-family: 'Orbitron', sans-serif;
-      background: rgba(255, 0, 100, 0.12);
-      border: 1px solid rgba(255, 0, 100, 0.25);
-      color: #f472b6;
-      padding: 0.5rem 2rem;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 0.7rem;
-      cursor: pointer;
-      transition: 0.2s;
-      letter-spacing: 0.04em;
+    .dash-btn.green { background: linear-gradient(135deg, #059669, #10b981); }
+    .dash-btn.pink { background: linear-gradient(135deg, #db2777, #ec4899); }
+    .dash-btn.cyan { background: linear-gradient(135deg, #0891b2, #06b6d4); }
+    .dash-btn.amber { background: linear-gradient(135deg, #d97706, #f59e0b); }
+    .dash-btn.purple { background: linear-gradient(135deg, #7c3aed, #8b5cf6); }
+    .dash-btn.gold { background: linear-gradient(135deg, #d97706, #f59e0b); }
+    .dash-btn.small { padding: 0.3rem 0.8rem; font-size: 0.45rem; }
+    .dash-btn.invest-btn { 
+      background: linear-gradient(135deg, #059669, #10b981); 
+      padding: 0.3rem 0.8rem; 
+      font-size: 0.45rem;
+      min-width: 60px;
     }
-    .logout-btn:hover { background: rgba(255, 0, 100, 0.2); box-shadow: 0 0 50px rgba(255, 0, 100, 0.15); transform: scale(1.02); }
+    .dash-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+    /* PROFILE - UPLOAD AVATAR */
+    .profile-avatar-upload {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+    .profile-avatar-upload .avatar-preview {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6d28d9, #2563eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 0 40px rgba(37, 99, 235, 0.3);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .profile-avatar-upload .avatar-preview:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 60px rgba(37, 99, 235, 0.5);
+    }
+    .profile-avatar-upload .avatar-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .profile-avatar-upload .avatar-preview .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 50%;
+    }
+    .profile-avatar-upload .avatar-preview:hover .overlay {
+      opacity: 1;
+    }
+    .profile-avatar-upload .avatar-preview .overlay i {
+      font-size: 1.5rem;
+      color: white;
+    }
+    .profile-avatar-upload .upload-label {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.5rem;
+      color: #a78bfa;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+    .profile-avatar-upload .upload-label:hover {
+      color: #f0f4ff;
+    }
+    .profile-avatar-upload input[type="file"] {
+      display: none;
+    }
+
     .kyc-upload {
       border: 2px dashed rgba(0, 255, 255, 0.15);
       border-radius: 1.5rem;
-      padding: 1rem;
+      padding: 0.8rem;
       text-align: center;
       color: #8a9bb8;
       transition: 0.2s;
       cursor: pointer;
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.6rem;
+      font-size: 0.55rem;
     }
     .kyc-upload:hover { border-color: #a78bfa; background: rgba(0, 255, 255, 0.03); }
-    .kyc-upload i { font-size: 1.5rem; color: #67e8f9; margin-bottom: 0.3rem; }
+    .kyc-upload i { font-size: 1.2rem; color: #67e8f9; margin-bottom: 0.2rem; }
+
     .address-display {
       background: rgba(0,0,0,0.3);
       border-radius: 1rem;
-      padding: 0.6rem;
+      padding: 0.5rem;
       margin: 0.3rem 0 0.8rem;
-      font-size: 0.55rem;
+      font-size: 0.5rem;
       color: #a5b4fc;
       word-break: break-all;
       border: 1px solid rgba(0,255,255,0.06);
@@ -487,6 +709,139 @@
     }
     .dash-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.3rem; }
     .dash-row .dash-btn { flex: 1; text-align: center; }
+
+    /* LISTA DE EMPRÉSTIMOS */
+    .loan-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+    .loan-item {
+      background: rgba(0, 10, 35, 0.4);
+      border-radius: 1rem;
+      padding: 0.8rem 1.2rem;
+      border: 1px solid rgba(0, 255, 255, 0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: 0.2s;
+    }
+    .loan-item:hover {
+      border-color: rgba(167, 139, 250, 0.3);
+      background: rgba(0, 255, 255, 0.03);
+    }
+    .loan-item .loan-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .loan-item .loan-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .loan-item .loan-title {
+      font-family: 'Orbitron', sans-serif;
+      color: #bae6fd;
+      font-size: 0.65rem;
+      font-weight: 600;
+    }
+    .loan-item .loan-meta {
+      font-family: 'Orbitron', sans-serif;
+      color: #8a9bb8;
+      font-size: 0.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .loan-item .loan-meta span { display: flex; align-items: center; gap: 0.3rem; }
+    .loan-item .loan-meta i { color: #67e8f9; font-size: 0.5rem; }
+    .loan-item .loan-user {
+      font-family: 'Orbitron', sans-serif;
+      color: #a78bfa;
+      font-size: 0.5rem;
+    }
+    .loan-item .loan-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .loan-progress {
+      width: 100%;
+      margin-top: 0.3rem;
+    }
+    .loan-progress .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: rgba(0, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .loan-progress .progress-bar .progress-fill {
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #2dd4bf, #a78bfa);
+      transition: width 0.8s ease;
+    }
+    .loan-progress .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.4rem;
+      color: #8a9bb8;
+      margin-top: 0.15rem;
+    }
+    .loan-progress .progress-label .percent {
+      color: #fcd34d;
+      font-weight: 600;
+    }
+
+    .logout-area { margin-top: 1.8rem; display: flex; justify-content: flex-end; border-top: 1px solid rgba(0,255,255,0.06); padding-top: 1.2rem; }
+    .logout-btn {
+      font-family: 'Orbitron', sans-serif;
+      background: rgba(255, 0, 100, 0.12);
+      border: 1px solid rgba(255, 0, 100, 0.25);
+      color: #f472b6;
+      padding: 0.4rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.65rem;
+      cursor: pointer;
+      transition: 0.2s;
+      letter-spacing: 0.04em;
+    }
+    .logout-btn:hover { background: rgba(255, 0, 100, 0.2); box-shadow: 0 0 50px rgba(255, 0, 100, 0.15); transform: scale(1.02); }
+
+    .airdrop-value {
+      background: rgba(0,0,0,0.3);
+      border-radius: 1.5rem;
+      padding: 1rem;
+      text-align: center;
+      border: 1px dashed rgba(0,255,255,0.1);
+      margin-bottom: 1.2rem;
+    }
+    .airdrop-value .amount {
+      font-size: 1.5rem;
+      color: #fcd34d;
+      font-weight: 700;
+    }
+    .airdrop-value .label {
+      font-size: 0.55rem;
+      color: #8a9bb8;
+      display: block;
+      margin-top: 0.2rem;
+    }
+
+    @media (max-width: 900px) {
+      #dashboard.active { flex-direction: column; }
+      .dash-sidebar { width: 100%; min-width: unset; }
+      .loan-item .loan-row { flex-direction: column; align-items: stretch; }
+      .loan-item .loan-actions { justify-content: flex-start; }
+    }
+
     /* MODALS */
     .modal-overlay {
       position: fixed;
@@ -507,14 +862,20 @@
       border: 1px solid rgba(0, 255, 255, 0.2);
       border-radius: 2.5rem;
       padding: 2.5rem 2.8rem 2.8rem;
-      max-width: 440px;
+      max-width: 520px;
       width: 90%;
       box-shadow: 0 0 100px rgba(138, 43, 226, 0.3);
       text-align: center;
       position: relative;
+      max-height: 80vh;
+      overflow-y: auto;
     }
+    .modal-box::-webkit-scrollbar { width: 4px; }
+    .modal-box::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 10px; }
+    .modal-box::-webkit-scrollbar-thumb { background: #a78bfa; border-radius: 10px; }
+
     .modal-box h2 { font-family: 'Orbitron', sans-serif; color: #f0f4ff; margin-bottom: 0.8rem; font-size: 1.2rem; letter-spacing: 0.04em; }
-    .modal-box p { font-family: 'Orbitron', sans-serif; color: #b9c8e6; margin-bottom: 1.5rem; font-size: 0.75rem; }
+    .modal-box p { font-family: 'Orbitron', sans-serif; color: #b9c8e6; margin-bottom: 1rem; font-size: 0.75rem; }
     .modal-box .modal-actions { display: flex; gap: 1rem; justify-content: center; }
     .modal-box .modal-actions button {
       font-family: 'Orbitron', sans-serif;
@@ -597,6 +958,61 @@
       transition: 0.25s;
     }
     .modal-box .input-group input:focus { border-color: #a78bfa; box-shadow: 0 0 30px #6d28d9; }
+    .modal-box .loan-detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(0,255,255,0.04);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      color: #b9c8e6;
+      text-align: left;
+    }
+    .modal-box .loan-detail-row .label { color: #8a9bb8; }
+    .modal-box .loan-detail-row .value { color: #f0f4ff; font-weight: 600; }
+    .modal-box .stat-detail-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(0,255,255,0.04);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      color: #b9c8e6;
+      text-align: left;
+    }
+    .modal-box .stat-detail-item .stat-icon { 
+      font-size: 1.2rem; 
+      width: 36px; 
+      text-align: center; 
+      color: #2dd4bf;
+    }
+    .modal-box .stat-detail-item .stat-info { flex: 1; }
+    .modal-box .stat-detail-item .stat-info .stat-name { color: #f0f4ff; font-weight: 600; }
+    .modal-box .stat-detail-item .stat-info .stat-desc { color: #8a9bb8; font-size: 0.5rem; }
+    .modal-box .stat-detail-item .stat-value { color: #fcd34d; font-weight: 700; font-size: 0.8rem; }
+    .modal-box .close-btn-bottom {
+      margin-top: 1.5rem;
+      width: 100%;
+    }
+    .modal-box .invest-confirm-info {
+      background: rgba(0,0,0,0.3);
+      border-radius: 1rem;
+      padding: 0.8rem;
+      margin: 0.8rem 0;
+      text-align: left;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.6rem;
+      color: #b9c8e6;
+    }
+    .modal-box .invest-confirm-info .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.3rem 0;
+    }
+    .modal-box .invest-confirm-info .row .label { color: #8a9bb8; }
+    .modal-box .invest-confirm-info .row .value { color: #f0f4ff; font-weight: 600; }
+
     /* FOOTER */
     .site-footer {
       max-width: 1320px;
@@ -631,12 +1047,6 @@
     .footer-links a:hover { color: #f0f4ff; border-bottom-color: #a78bfa; text-shadow: 0 0 30px #a78bfa; }
     .footer-copy { font-family: 'Orbitron', sans-serif; font-size: 0.6rem; color: #4b6080; letter-spacing: 0.04em; }
     .footer-copy i { color: #2dd4bf; margin: 0 4px; }
-    @media (max-width: 1000px) {
-      .dash-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 650px) {
-      .dash-grid { grid-template-columns: 1fr; }
-    }
   </style>
 </head>
 <body>
@@ -826,96 +1236,277 @@
     </div>
   </div>
 
-  <!-- ===== DASHBOARD - ORGANIZED ===== -->
+  <!-- ===== DASHBOARD COM SIDEBAR ===== -->
   <div id="dashboard">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem;">
-      <h2 style="font-family:'Orbitron',sans-serif; color:#c4b5fd; font-size:1.4rem;"><i class="fas fa-tachometer-alt" style="color:#2dd4bf;"></i> Dashboard</h2>
-      <span style="font-family:'Orbitron',sans-serif; color:#8a9bb8; font-size:0.7rem;"><i class="fas fa-user-astronaut"></i> Alex Rivera</span>
-    </div>
-    <div class="dash-grid">
-      <!-- CONFIGURATION -->
-      <div class="dash-card"><h3><i class="fas fa-cog"></i> Configuration</h3>
-        <div class="input-group"><label>Default currency</label><input type="text" value="BRC" /></div>
-        <div class="input-group"><label>Language</label><input type="text" value="English" /></div>
-        <div class="input-group"><label>Notification</label><input type="text" value="Email + Push" /></div>
-        <button class="dash-btn" onclick="alert('⚙️ Settings saved (demo)')"><i class="fas fa-save"></i> Save</button>
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar">
+      <div class="user-badge">
+        <div class="avatar" id="sidebarAvatar" onclick="showPage('profile')">
+          <span id="avatarText">AR</span>
+        </div>
+        <div class="name" id="sidebarName" onclick="showPage('profile')">Alex Rivera</div>
+        <div class="rank"><i class="fas fa-star" style="color:#fcd34d;"></i> Rank D · 1,420 pts</div>
       </div>
+      <ul class="sidebar-menu">
+        <li class="active" data-page="overview"><i class="fas fa-th-large"></i> Overview</li>
+        <li data-page="create-loan"><i class="fas fa-hand-holding-usd"></i> Create Loan</li>
+        <li data-page="turbo-loan"><i class="fas fa-bolt"></i> Turbo Loan</li>
+        <li data-page="airdrop"><i class="fas fa-gift"></i> Airdrop</li>
+        <li data-page="staking"><i class="fas fa-coins"></i> Staking</li>
+        <li data-page="kyc"><i class="fas fa-id-card"></i> KYC</li>
+        <li data-page="config"><i class="fas fa-cog"></i> Config</li>
+        <li data-page="wallet"><i class="fas fa-wallet"></i> Wallet</li>
+        <li data-page="security"><i class="fas fa-shield-alt"></i> Security</li>
+        <li data-page="profile"><i class="fas fa-user-cog"></i> Profile</li>
+        <li data-page="history"><i class="fas fa-history"></i> History</li>
+        <li data-page="referrals"><i class="fas fa-users"></i> Referrals</li>
+        <li class="logout-item" id="logoutSidebar"><i class="fas fa-sign-out-alt"></i> Logout</li>
+      </ul>
+    </aside>
 
-      <!-- KYC -->
-      <div class="dash-card"><h3><i class="fas fa-id-card"></i> KYC Verification</h3>
-        <p style="font-family:'Orbitron',sans-serif; color:#b9c8e6; font-size:0.55rem; margin-bottom:0.8rem;">Upload documents to unlock full loan limits.</p>
-        <div class="kyc-upload" onclick="document.getElementById('fileUpload').click();">
-          <i class="fas fa-cloud-upload-alt"></i><div>Upload ID / Passport</div>
-          <input type="file" id="fileUpload" style="display:none;" accept="image/*,.pdf" />
+    <!-- CONTENT -->
+    <div class="dash-content" id="dashContent">
+      <!-- OVERVIEW -->
+      <div id="page-overview" class="page-content">
+        <div class="page-title"><i class="fas fa-th-large"></i> Dashboard Overview</div>
+        <div class="stats-grid">
+          <div class="stat-card" onclick="openStatDetail('loans-created')">
+            <div class="icon"><i class="fas fa-file-invoice"></i></div>
+            <div class="number">4</div>
+            <div class="label">Loans Created</div>
+          </div>
+          <div class="stat-card" onclick="openStatDetail('pending-requests')">
+            <div class="icon"><i class="fas fa-hourglass-half"></i></div>
+            <div class="number">2</div>
+            <div class="label">Pending Requests</div>
+          </div>
+          <div class="stat-card" onclick="openStatDetail('loans-paid')">
+            <div class="icon"><i class="fas fa-check-circle"></i></div>
+            <div class="number">7</div>
+            <div class="label">Loans Paid</div>
+          </div>
+          <div class="stat-card" onclick="openStatDetail('active-users')">
+            <div class="icon"><i class="fas fa-user-check"></i></div>
+            <div class="number">142</div>
+            <div class="label">Active Users</div>
+          </div>
         </div>
-        <div class="kyc-upload" style="margin-top:0.5rem;" onclick="document.getElementById('fileUpload2').click();">
-          <i class="fas fa-file-invoice"></i><div>Proof of address</div>
-          <input type="file" id="fileUpload2" style="display:none;" accept="image/*,.pdf" />
+
+        <div class="panel-card">
+          <h4><i class="fas fa-list-ul"></i> All Loans Created by Users</h4>
+          <div class="loan-list" id="loanListContainer"></div>
         </div>
-        <button class="dash-btn" style="margin-top:0.8rem;" onclick="alert('📤 KYC submitted (demo)')"><i class="fas fa-check-circle"></i> Submit KYC</button>
       </div>
 
       <!-- CREATE LOAN -->
-      <div class="dash-card"><h3><i class="fas fa-hand-holding-usd"></i> Create Loan</h3>
-        <div class="input-group"><label>Loan Title</label><input type="text" placeholder="e.g. DeFi expansion" value="Yield farming" /></div>
-        <div class="input-group"><label>Description</label><textarea placeholder="Describe purpose">Provide liquidity for BRC/ETH pool.</textarea></div>
-        <div class="input-group"><label>Interest Rate (%)</label><input type="number" step="0.1" value="4.2" /></div>
-        <div class="input-group"><label>Amount (BRC)</label><input type="number" value="12500" /></div>
-        <button class="dash-btn" onclick="alert('✅ Loan created (demo)')"><i class="fas fa-plus-circle"></i> Create Loan</button>
+      <div id="page-create-loan" class="page-content" style="display:none;">
+        <div class="page-title"><i class="fas fa-hand-holding-usd"></i> Create Loan</div>
+        <div class="panel-card">
+          <div class="input-group"><label>Loan Title</label><input type="text" placeholder="Ex: DeFi Expansion" value="Yield Farming" id="loanTitle" /></div>
+          <div class="input-group"><label>Loan Purpose / Objective</label><textarea placeholder="Describe the objective of your loan" id="loanPurpose">Provide liquidity for BRC/ETH pool.</textarea></div>
+          <div class="input-group"><label>Interest Rate (%)</label><input type="number" step="0.1" value="4.2" id="loanRate" /></div>
+          <div class="input-group"><label>Amount (BRC)</label><input type="number" value="12500" id="loanAmount" /></div>
+          <button class="dash-btn" onclick="createLoan()"><i class="fas fa-plus-circle"></i> Create Loan</button>
+        </div>
       </div>
 
       <!-- TURBO LOAN -->
-      <div class="dash-card"><h3><i class="fas fa-bolt" style="color:#f472b6;"></i> Turbo Loan</h3>
-        <p style="font-family:'Orbitron',sans-serif; color:#b9c8e6; font-size:0.55rem; margin-bottom:0.8rem;">Instant approval · up to 5,000 BRC · 0% fee</p>
-        <div class="turbo-locked" id="turboLockMsg" style="font-size:0.5rem; color:#f472b6; margin-bottom:0.5rem;"><i class="fas fa-lock"></i> Disponível apenas para ranking D ou superior</div>
-        <div class="input-group"><label>Amount (BRC)</label><input type="number" value="2500" id="turboAmount" /></div>
-        <div class="input-group"><label>Repay in</label><select id="turboPeriod"><option>24 hours</option><option>48 hours</option><option>7 days</option></select></div>
-        <button class="dash-btn" style="background:linear-gradient(135deg,#d946ef,#7c3aed);" id="turboBtn" disabled onclick="alert('⚡ Turbo loan requested (demo)')"><i class="fas fa-rocket"></i> Get Turbo Loan</button>
-      </div>
-
-      <!-- STAKING -->
-      <div class="dash-card"><h3><i class="fas fa-coins" style="color:#fcd34d;"></i> Staking</h3>
-        <p style="font-family:'Orbitron',sans-serif; color:#b9c8e6; font-size:0.55rem; margin-bottom:0.8rem;">Stake BRC and earn rewards. Flexible terms, high APY.</p>
-        <div class="input-group"><label>Amount to Stake (BRC)</label><input type="number" placeholder="Min 100 BRC" value="500" /></div>
-        <div class="input-group"><label>Staking Period</label>
-          <select><option>30 days (5% APY)</option><option>60 days (7.5% APY)</option><option>90 days (12% APY)</option><option>180 days (18% APY)</option></select>
+      <div id="page-turbo-loan" class="page-content" style="display:none;">
+        <div class="page-title"><i class="fas fa-bolt" style="color:#f472b6;"></i> Turbo Loan</div>
+        <div class="panel-card">
+          <p style="font-family:'Orbitron',sans-serif; color:#b9c8e6; font-size:0.55rem; margin-bottom:1rem;">Instant approval · up to 5,000 BRC · 0% fee</p>
+          <div class="input-group"><label>Loan Title</label><input type="text" placeholder="Ex: Quick Liquidity" value="Emergency Fund" id="turboTitle" /></div>
+          <div class="input-group"><label>Loan Purpose / Objective</label><textarea placeholder="Describe the objective" id="turboPurpose">Cover operational costs for 30 days.</textarea></div>
+          <div class="input-group"><label>Amount (BRC)</label><input type="number" value="2500" id="turboAmount" /></div>
+          <div class="input-group"><label>Repayment Term</label>
+            <select id="turboTerm">
+              <option>1 week</option>
+              <option>1 month</option>
+              <option>2 months</option>
+              <option>3 months</option>
+              <option>6 months</option>
+              <option>1 year</option>
+            </select>
+          </div>
+          <button class="dash-btn pink" onclick="createTurboLoan()"><i class="fas fa-rocket"></i> Create Turbo Loan</button>
         </div>
-        <button class="dash-btn green" onclick="alert('🔒 Staking activated! (demo)')"><i class="fas fa-lock"></i> Stake Now</button>
-        <div style="margin-top:0.4rem; font-size:0.5rem; color:#6b8cbd;"><i class="fas fa-info-circle"></i> Rewards distributed daily</div>
       </div>
 
       <!-- AIRDROP -->
-      <div class="dash-card"><h3><i class="fas fa-gift" style="color:#f472b6;"></i> Airdrop</h3>
-        <p style="font-family:'Orbitron',sans-serif; color:#b9c8e6; font-size:0.55rem; margin-bottom:0.8rem;">Claim free BRC tokens. Participate in community airdrops.</p>
-        <div style="background:rgba(0,0,0,0.3); border-radius:1.2rem; padding:0.8rem; margin-bottom:0.8rem; text-align:center; border:1px dashed rgba(0,255,255,0.1);">
-          <span style="font-size:0.8rem; color:#fcd34d;">🎁 250 BRC</span>
-          <span style="display:block; font-size:0.5rem; color:#8a9bb8;">Available for claiming</span>
+      <div id="page-airdrop" class="page-content" style="display:none;">
+        <div class="page-title"><i class="fas fa-gift" style="color:#f472b6;"></i> Airdrop</div>
+        <div class="panel-card">
+          <div class="airdrop-value">
+            <span class="amount">🎁 250 BRC</span>
+            <span class="label">Available for claiming</span>
+          </div>
+          <div class="input-group"><label>Your BRC Wallet Address</label><input type="text" placeholder="0x... or BRC address" value="0x7F4...cB92" id="airdropWallet" /></div>
+          <button class="dash-btn pink" onclick="claimAirdrop()"><i class="fas fa-arrow-down"></i> Claim Airdrop</button>
         </div>
-        <div class="input-group"><label>Your BRC Wallet</label><input type="text" placeholder="0x... or BRC address" value="0x7F4...cB92" /></div>
-        <button class="dash-btn pink" onclick="alert('🎉 Airdrop claimed! (demo)')"><i class="fas fa-arrow-down"></i> Claim Airdrop</button>
-        <div style="margin-top:0.4rem; font-size:0.5rem; color:#6b8cbd;"><i class="fas fa-clock"></i> Next airdrop in 2d 14h</div>
       </div>
 
-      <!-- SEND BRC -->
-      <div class="dash-card"><h3><i class="fas fa-paper-plane" style="color:#22d3ee;"></i> Send BRC</h3>
-        <p style="font-family:'Orbitron',sans-serif; color:#b9c8e6; font-size:0.55rem; margin-bottom:0.8rem;">Send Bradicoin to any wallet address.</p>
-        <div class="input-group"><label>Recipient Wallet</label><input type="text" placeholder="0x... or BRC address" value="0x8F3...dE71" /></div>
-        <div class="input-group"><label>Amount (BRC)</label><input type="number" placeholder="0.00" value="50" /></div>
-        <button class="dash-btn cyan" onclick="document.getElementById('sendModal').classList.add('active');"><i class="fas fa-arrow-right"></i> Send</button>
+      <!-- STAKING -->
+      <div id="page-staking" class="page-content" style="display:none;">
+        <div class="page-title"><i class="fas fa-coins" style="color:#fcd34d;"></i> Staking</div>
+        <div class="panel-card">
+          <div class="input-group"><label>Amount to Stake (BRC)</label><input type="number" placeholder="Min 100 BRC" value="500" id="stakeAmount" /></div>
+          <div class="input-group"><label>Staking Period</label>
+            <select id="stakePeriod">
+              <option>24 hours (2% APY)</option>
+              <option>1 week (4% APY)</option>
+              <option>1 month (8% APY)</option>
+            </select>
+          </div>
+          <button class="dash-btn green" onclick="createStaking()"><i class="fas fa-lock"></i> Create Staking</button>
+        </div>
       </div>
 
-      <!-- RECEIVE & GENERATE WALLET -->
-      <div class="dash-card"><h3><i class="fas fa-qrcode" style="color:#34d399;"></i> Receive & Wallet</h3>
-        <p style="font-family:'Orbitron',sans-serif; color:#b9c8e6; font-size:0.55rem; margin-bottom:0.3rem;">Your BRC wallet address to receive funds.</p>
-        <div class="address-display" id="walletAddressDisplay">0x7F4...cB92</div>
-        <div class="dash-row">
-          <button class="dash-btn amber" onclick="navigator.clipboard.writeText(document.getElementById('walletAddressDisplay').textContent); alert('📋 Address copied!')"><i class="fas fa-copy"></i> Copy</button>
-          <button class="dash-btn purple" onclick="generateNewWallet();"><i class="fas fa-sync-alt"></i> Generate</button>
+      <!-- KYC -->
+      <div id="page-kyc" class="page-content" style="display:none;">
+        <div class="page-title"><i class="fas fa-id-card"></i> KYC Verification</div>
+        <div class="panel-card">
+          <p style="font-family:'Orbitron',sans-serif; color:#b9c8e6; font-size:0.55rem; margin-bottom:1rem;">Upload documents to unlock full loan limits.</p>
+          <div class="kyc-upload" onclick="alert('📤 Upload ID (demo)')">
+            <i class="fas fa-cloud-upload-alt"></i> Upload ID / Passport
+          </div>
+          <div class="kyc-upload" style="margin-top:0.5rem;" onclick="alert('📤 Upload Proof of address (demo)')">
+            <i class="fas fa-file-invoice"></i> Proof of address
+          </div>
+          <button class="dash-btn" style="margin-top:0.8rem;" onclick="alert('📤 KYC submitted successfully (demo)')"><i class="fas fa-check-circle"></i> Submit KYC</button>
         </div>
-        <div style="margin-top:0.4rem; font-size:0.5rem; color:#6b8cbd;"><i class="fas fa-info-circle"></i> New wallet generated on-chain</div>
+      </div>
+
+      <!-- CONFIG -->
+      <div id="page-config" class="page-content" style="display:none;">
+        <div class="page-title"><i class="fas fa-cog"></i> Config</div>
+        <div class="panel-card">
+          <div class="input-group"><label>Default currency</label><input type="text" value="BRC" /></div>
+          <div class="input-group"><label>Language</label><input type="text" value="English" /></div>
+          <div class="input-group"><label>Notification</label><input type="text" value="Email + Push" /></div>
+          <button class="dash-btn" onclick="alert('⚙️ Settings saved successfully (demo)')"><i class="fas fa-save"></i> Save</button>
+        </div>
+      </div>
+
+      <!-- WALLET -->
+      <div id="page-wallet" class="page-content" style="display:none;">
+        <div class="page-title"><i class="fas fa-wallet"></i> Wallet</div>
+        <div class="panel-card">
+          <div class="input-group"><label>Wallet Address</label><input type="text" value="0x7F4...cB92" id="walletDisplay" /></div>
+          <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
+            <button class="dash-btn amber" onclick="navigator.clipboard.writeText(document.getElementById('walletDisplay').value); alert('📋 Address copied!')"><i class="fas fa-copy"></i> Copy</button>
+            <button class="dash-btn purple" onclick="document.getElementById('walletDisplay').value='0x'+Math.random().toString(16).slice(2,10)+'...'+Math.random().toString(16).slice(2,6); alert('🆕 New wallet generated')"><i class="fas fa-sync-alt"></i> Generate</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECURITY -->
+      <div id="page-security" class="page-content" style="display:none;">
+        <div class="page-title"><i class="fas fa-shield-alt"></i> Security</div>
+        <div class="panel-card"><p style="font-family:'Orbitron',sans-serif; color:#b9c8e6; font-size:0.6rem;">2FA, recovery phrases, session management.</p><button class="dash-btn" onclick="alert('🔐 2FA enabled successfully (demo)')">Enable 2FA</button></div>
+      </div>
+
+      <!-- PROFILE - ATUALIZADO -->
+      <div id="page-profile" class="page-content" style="display:none;">
+        <div class="page-title"><i class="fas fa-user-cog"></i> Profile</div>
+        <div class="panel-card">
+          <!-- Upload de Foto -->
+          <div class="profile-avatar-upload">
+            <div class="avatar-preview" id="profileAvatarPreview" onclick="document.getElementById('avatarUpload').click()">
+              <span id="profileAvatarText">AR</span>
+              <div class="overlay"><i class="fas fa-camera"></i></div>
+            </div>
+            <input type="file" id="avatarUpload" accept="image/*" onchange="uploadAvatar(event)" />
+            <span class="upload-label" onclick="document.getElementById('avatarUpload').click()">
+              <i class="fas fa-upload"></i> Upload Photo
+            </span>
+          </div>
+
+          <div class="input-group"><label>First Name</label><input type="text" id="profileFirstName" value="Alex" placeholder="Your first name" /></div>
+          <div class="input-group"><label>Last Name</label><input type="text" id="profileLastName" value="Rivera" placeholder="Your last name" /></div>
+          <div class="input-group"><label>Email</label><input type="email" id="profileEmail" value="alex.rivera@bradicoin.com" placeholder="Your email" /></div>
+          
+          <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:0.5rem;">
+            <button class="dash-btn" style="flex:1;" onclick="updateProfile()"><i class="fas fa-check"></i> Confirm Changes</button>
+            <button class="dash-btn purple" style="flex:1;" onclick="resetProfile()"><i class="fas fa-undo"></i> Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- HISTORY -->
+      <div id="page-history" class="page-content" style="display:none;">
+        <div class="page-title"><i class="fas fa-history"></i> History</div>
+        <div class="panel-card"><p style="font-family:'Orbitron',sans-serif; color:#8a9bb8; font-size:0.55rem;">Loan history, transactions (demo)</p></div>
+      </div>
+
+      <!-- REFERRALS -->
+      <div id="page-referrals" class="page-content" style="display:none;">
+        <div class="page-title"><i class="fas fa-users"></i> Referrals</div>
+        <div class="panel-card"><p style="font-family:'Orbitron',sans-serif; color:#8a9bb8; font-size:0.55rem;">Referral link: bradiloan.io/ref/alex</p></div>
       </div>
     </div>
-    <div class="logout-area"><button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button></div>
+  </div>
+</div>
+
+<!-- MODAL DE INVESTIMENTO -->
+<div class="modal-overlay" id="investModal">
+  <div class="modal-box">
+    <button class="close-modal" onclick="document.getElementById('investModal').classList.remove('active');">&times;</button>
+    <h2><i class="fas fa-coins" style="color:#10b981;"></i> Invest in Loan</h2>
+    <p>Invest your Bradicoin in this loan and earn returns.</p>
+    <div class="invest-confirm-info" id="investInfo">
+      <div class="row"><span class="label">Loan</span><span class="value" id="investLoanTitle">-</span></div>
+      <div class="row"><span class="label">Borrower</span><span class="value" id="investBorrower">-</span></div>
+      <div class="row"><span class="label">Total Amount</span><span class="value" id="investTotalAmount">-</span></div>
+      <div class="row"><span class="label">Interest Rate</span><span class="value" id="investRate">-</span></div>
+    </div>
+    <div class="input-group"><label>Amount to Invest (BRC)</label><input type="number" placeholder="Min 100 BRC" value="500" id="investAmount" /></div>
+    <div style="display:flex; gap:0.8rem; justify-content:center; margin-top:0.5rem;">
+      <button class="modal-btn" style="flex:1; background:linear-gradient(135deg,#059669,#10b981);" onclick="confirmInvestment()"><i class="fas fa-check"></i> Invest Now</button>
+      <button class="modal-btn" style="flex:1; background:transparent; border:1.5px solid rgba(255,255,255,0.15); box-shadow:none;" onclick="document.getElementById('investModal').classList.remove('active');">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DE DETALHES DOS CARDS ESTATÍSTICOS -->
+<div class="modal-overlay" id="statDetailModal">
+  <div class="modal-box">
+    <button class="close-modal" onclick="document.getElementById('statDetailModal').classList.remove('active');">&times;</button>
+    <h2 id="statDetailTitle"><i class="fas fa-chart-bar" style="color:#2dd4bf;"></i> Details</h2>
+    <div id="statDetailContent"></div>
+    <button class="dash-btn close-btn-bottom" onclick="document.getElementById('statDetailModal').classList.remove('active');"><i class="fas fa-times"></i> Close</button>
+  </div>
+</div>
+
+<!-- MODAL DE DETALHES DO EMPRÉSTIMO -->
+<div class="modal-overlay" id="loanDetailModal">
+  <div class="modal-box" style="max-width: 480px;">
+    <button class="close-modal" onclick="document.getElementById('loanDetailModal').classList.remove('active');">&times;</button>
+    <h2><i class="fas fa-file-invoice" style="color:#2dd4bf;"></i> Loan Details</h2>
+    <div id="loanDetailContent">
+      <div class="loan-detail-row"><span class="label">Title</span><span class="value" id="detailTitle">-</span></div>
+      <div class="loan-detail-row"><span class="label">Purpose</span><span class="value" id="detailPurpose">-</span></div>
+      <div class="loan-detail-row"><span class="label">Amount (BRC)</span><span class="value" id="detailAmount">-</span></div>
+      <div class="loan-detail-row"><span class="label">Amount (USD)</span><span class="value" id="detailUSD">-</span></div>
+      <div class="loan-detail-row"><span class="label">Interest Rate</span><span class="value" id="detailRate">-</span></div>
+      <div class="loan-detail-row"><span class="label">Term</span><span class="value" id="detailTerm">-</span></div>
+      <div class="loan-detail-row"><span class="label">Borrower</span><span class="value" id="detailBorrower">-</span></div>
+      <div class="loan-detail-row"><span class="label">Progress</span><span class="value" id="detailProgress">-</span></div>
+      <div class="loan-detail-row"><span class="label">Status</span><span class="value" id="detailStatus" style="color:#6ee7b7;">● Active</span></div>
+    </div>
+    <button class="dash-btn" style="margin-top:1rem; width:100%; background:linear-gradient(135deg,#059669,#10b981);" onclick="openInvestFromDetail()"><i class="fas fa-coins"></i> Invest in this Loan</button>
+    <button class="dash-btn" style="margin-top:0.5rem; width:100%;" onclick="document.getElementById('loanDetailModal').classList.remove('active');">Close</button>
+  </div>
+</div>
+
+<!-- MODAL DE CONFIRMAÇÃO DE LOGOUT -->
+<div class="modal-overlay" id="logoutConfirmModal">
+  <div class="modal-box">
+    <h2><i class="fas fa-question-circle" style="color:#f472b6;"></i> Confirm Logout</h2>
+    <p>Are you sure you want to logout? You will be redirected to the home page.</p>
+    <div class="modal-actions">
+      <button class="btn-yes" id="logoutConfirmYes"><i class="fas fa-check"></i> Yes, Logout</button>
+      <button class="btn-no" id="logoutConfirmNo"><i class="fas fa-times"></i> Cancel</button>
+    </div>
   </div>
 </div>
 
@@ -945,13 +1536,6 @@
   <div class="footer-copy"><i class="fas fa-copyright"></i> 2026 Bradi Loan · built on <i class="fas fa-cube"></i> Bradicoin</div>
 </footer>
 
-<!-- LOGOUT MODAL -->
-<div class="modal-overlay" id="logoutModal">
-  <div class="modal-box"><h2><i class="fas fa-question-circle" style="color:#f472b6;"></i> Confirm</h2><p>Are you sure you want to logout?</p>
-    <div class="modal-actions"><button class="btn-yes" id="logoutYes">Yes</button><button class="btn-no" id="logoutNo">No</button></div>
-  </div>
-</div>
-
 <!-- AUTH MODAL -->
 <div class="modal-overlay" id="authModal">
   <div class="modal-box">
@@ -975,44 +1559,354 @@
 </div>
 
 <script>
-  // RANKING SYSTEM
-  let currentRank = 'F';
-  let currentPoints = 0;
-  const rankMap = { 'F':0, 'E':500, 'D':1200, 'C':2200, 'B':3500, 'A':5000 };
-  const rankOrder = ['F','E','D','C','B','A'];
-  const rankColors = { 'F':'#4a5568', 'E':'#e53e3e', 'D':'#ed8936', 'C':'#ecc94b', 'B':'#48bb78', 'A':'#38a169' };
+  // Dados dos empréstimos
+  const loansData = [
+    { id: 1, title: 'DeFi Yield Farming', purpose: 'Provide liquidity for BRC/ETH pool to generate yield', amount: 12500, rate: 4.2, term: '3 months', borrower: 'Carlos M.', status: 'Active', progress: 65 },
+    { id: 2, title: 'NFT Collection Expansion', purpose: 'Acquire rare NFTs for the collection portfolio', amount: 8200, rate: 3.8, term: '6 months', borrower: 'Fernanda S.', status: 'Active', progress: 40 },
+    { id: 3, title: 'Business Working Capital', purpose: 'Cover operational costs for the next quarter', amount: 25000, rate: 5.1, term: '1 year', borrower: 'Roberto L.', status: 'Pending', progress: 15 },
+    { id: 4, title: 'Real Estate Tokenization', purpose: 'Tokenize a property portfolio on the blockchain', amount: 50000, rate: 6.5, term: '2 years', borrower: 'Ana P.', status: 'Active', progress: 78 },
+    { id: 5, title: 'Crypto Education Platform', purpose: 'Develop an educational platform for crypto beginners', amount: 3500, rate: 3.2, term: '1 month', borrower: 'Lucas M.', status: 'Paid', progress: 100 }
+  ];
 
-  function updateRankUI() {
-    const idx = rankOrder.indexOf(currentRank);
-    const rankEl = document.querySelector('.rank-badge .rank-letter');
-    if(rankEl) rankEl.textContent = currentRank;
-    // update turbo button
-    const unlockRanks = ['D','C','B','A'];
-    const turboBtn = document.getElementById('turboBtn');
-    const turboLock = document.getElementById('turboLockMsg');
-    if (unlockRanks.includes(currentRank)) {
-      turboBtn.disabled = false;
-      turboLock.innerHTML = '<i class="fas fa-check-circle" style="color:#48bb78;"></i> Turbo disponível!';
-      turboLock.style.color = '#48bb78';
+  let loanCounter = 6;
+  let currentInvestLoanId = null;
+  let userProfile = {
+    firstName: 'Alex',
+    lastName: 'Rivera',
+    email: 'alex.rivera@bradicoin.com',
+    avatar: null
+  };
+
+  // ============ FUNÇÕES DO PERFIL ============
+  
+  // Upload de avatar
+  function uploadAvatar(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const imageData = e.target.result;
+      userProfile.avatar = imageData;
+      
+      // Atualizar pré-visualização no perfil
+      const preview = document.getElementById('profileAvatarPreview');
+      const textSpan = document.getElementById('profileAvatarText');
+      if (textSpan) textSpan.style.display = 'none';
+      preview.innerHTML = `<img src="${imageData}" alt="Avatar" /><div class="overlay"><i class="fas fa-camera"></i></div>`;
+      
+      // Atualizar sidebar
+      updateSidebarAvatar();
+      
+      alert('✅ Photo uploaded successfully!');
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Atualizar avatar na sidebar
+  function updateSidebarAvatar() {
+    const avatarEl = document.getElementById('sidebarAvatar');
+    const textSpan = document.getElementById('avatarText');
+    
+    if (userProfile.avatar) {
+      if (textSpan) textSpan.style.display = 'none';
+      avatarEl.innerHTML = `<img src="${userProfile.avatar}" alt="Avatar" />`;
     } else {
-      turboBtn.disabled = true;
-      turboLock.innerHTML = '<i class="fas fa-lock"></i> Disponível apenas para ranking D ou superior';
-      turboLock.style.color = '#f472b6';
+      avatarEl.innerHTML = `<span id="avatarText">${userProfile.firstName.charAt(0)}${userProfile.lastName.charAt(0)}</span>`;
     }
   }
 
-  // Generate new wallet address
-  function generateNewWallet() {
-    const chars = '0123456789ABCDEF';
-    let addr = '0x';
-    for (let i = 0; i < 40; i++) {
-      addr += chars[Math.floor(Math.random() * 16)];
-    }
-    document.getElementById('walletAddressDisplay').textContent = addr;
-    alert('🆕 New wallet generated: ' + addr);
+  // Atualizar nome na sidebar
+  function updateSidebarName() {
+    document.getElementById('sidebarName').textContent = userProfile.firstName + ' ' + userProfile.lastName;
   }
 
-  // LOGIN / LOGOUT
+  // Atualizar perfil (confirmar alterações)
+  function updateProfile() {
+    const firstName = document.getElementById('profileFirstName').value.trim();
+    const lastName = document.getElementById('profileLastName').value.trim();
+    const email = document.getElementById('profileEmail').value.trim();
+    
+    if (!firstName || !lastName || !email) {
+      alert('Please fill in all fields.');
+      return;
+    }
+    
+    userProfile.firstName = firstName;
+    userProfile.lastName = lastName;
+    userProfile.email = email;
+    
+    updateSidebarName();
+    updateSidebarAvatar();
+    
+    // Atualizar texto do avatar no perfil se não houver foto
+    const textSpan = document.getElementById('profileAvatarText');
+    if (!userProfile.avatar && textSpan) {
+      textSpan.textContent = firstName.charAt(0) + lastName.charAt(0);
+      textSpan.style.display = 'block';
+    }
+    
+    alert('✅ Profile updated successfully!');
+  }
+
+  // Reset do perfil
+  function resetProfile() {
+    document.getElementById('profileFirstName').value = userProfile.firstName;
+    document.getElementById('profileLastName').value = userProfile.lastName;
+    document.getElementById('profileEmail').value = userProfile.email;
+    
+    // Reset avatar
+    const preview = document.getElementById('profileAvatarPreview');
+    const textSpan = document.getElementById('profileAvatarText');
+    if (userProfile.avatar) {
+      userProfile.avatar = null;
+      preview.innerHTML = `<span id="profileAvatarText">${userProfile.firstName.charAt(0)}${userProfile.lastName.charAt(0)}</span>`;
+      updateSidebarAvatar();
+    } else {
+      if (textSpan) {
+        textSpan.textContent = userProfile.firstName.charAt(0) + userProfile.lastName.charAt(0);
+        textSpan.style.display = 'block';
+      }
+    }
+    
+    alert('🔄 Profile reset to saved values.');
+  }
+
+  // ============ FUNÇÕES DOS EMPRÉSTIMOS ============
+
+  function renderLoanList() {
+    const container = document.getElementById('loanListContainer');
+    if (!container) return;
+    container.innerHTML = '';
+
+    loansData.forEach(loan => {
+      const usdValue = (loan.amount * 0.70).toFixed(0);
+      const progress = loan.progress || 0;
+      const progressColor = progress >= 100 ? '#6ee7b7' : progress >= 50 ? '#fcd34d' : '#f472b6';
+
+      const item = document.createElement('div');
+      item.className = 'loan-item';
+      item.innerHTML = `
+        <div class="loan-row">
+          <div class="loan-info">
+            <div class="loan-title">${loan.title}</div>
+            <div class="loan-meta">
+              <span><i class="fas fa-coins"></i> ${loan.amount.toLocaleString()} BRC</span>
+              <span><i class="fas fa-dollar-sign"></i> $${usdValue} USD</span>
+              <span><i class="fas fa-percentage"></i> ${loan.rate}%</span>
+              <span class="loan-user"><i class="fas fa-user"></i> ${loan.borrower}</span>
+              <span style="color:${loan.status === 'Active' ? '#6ee7b7' : loan.status === 'Pending' ? '#fcd34d' : '#8a9bb8'};">
+                <i class="fas fa-circle" style="font-size:0.3rem;"></i> ${loan.status}
+              </span>
+            </div>
+          </div>
+          <div class="loan-actions">
+            <button class="dash-btn small" onclick="viewLoanDetail(${loan.id})"><i class="fas fa-eye"></i> View</button>
+            <button class="dash-btn invest-btn" onclick="openInvestModal(${loan.id})"><i class="fas fa-coins"></i> Invest</button>
+          </div>
+        </div>
+        <div class="loan-progress">
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:${progress}%; background: linear-gradient(90deg, #2dd4bf, ${progressColor});"></div>
+          </div>
+          <div class="progress-label">
+            <span>Progress</span>
+            <span class="percent">${progress}%</span>
+          </div>
+        </div>
+      `;
+      container.appendChild(item);
+    });
+  }
+
+  function openInvestModal(loanId) {
+    const loan = loansData.find(l => l.id === loanId);
+    if (!loan) return;
+    currentInvestLoanId = loanId;
+    document.getElementById('investLoanTitle').textContent = loan.title;
+    document.getElementById('investBorrower').textContent = loan.borrower;
+    document.getElementById('investTotalAmount').textContent = loan.amount.toLocaleString() + ' BRC';
+    document.getElementById('investRate').textContent = loan.rate + '%';
+    document.getElementById('investAmount').value = Math.min(500, loan.amount * 0.1);
+    document.getElementById('investModal').classList.add('active');
+  }
+
+  function confirmInvestment() {
+    const amount = parseFloat(document.getElementById('investAmount').value);
+    if (isNaN(amount) || amount < 100) {
+      alert('Minimum investment is 100 BRC.');
+      return;
+    }
+    const loan = loansData.find(l => l.id === currentInvestLoanId);
+    if (!loan) return;
+    alert(`✅ Investment successful!\n\nYou invested ${amount} BRC in "${loan.title}"\nExpected return: ${(amount * loan.rate / 100).toFixed(2)} BRC`);
+    loan.progress = Math.min(100, loan.progress + Math.floor(Math.random() * 10) + 2);
+    renderLoanList();
+    document.getElementById('investModal').classList.remove('active');
+  }
+
+  function openInvestFromDetail() {
+    const title = document.getElementById('detailTitle').textContent;
+    const loan = loansData.find(l => l.title === title);
+    if (loan) {
+      document.getElementById('loanDetailModal').classList.remove('active');
+      openInvestModal(loan.id);
+    }
+  }
+
+  function viewLoanDetail(id) {
+    const loan = loansData.find(l => l.id === id);
+    if (!loan) return;
+    document.getElementById('detailTitle').textContent = loan.title;
+    document.getElementById('detailPurpose').textContent = loan.purpose;
+    document.getElementById('detailAmount').textContent = loan.amount.toLocaleString() + ' BRC';
+    document.getElementById('detailUSD').textContent = '$' + (loan.amount * 0.70).toLocaleString() + ' USD';
+    document.getElementById('detailRate').textContent = loan.rate + '%';
+    document.getElementById('detailTerm').textContent = loan.term;
+    document.getElementById('detailBorrower').textContent = loan.borrower;
+    document.getElementById('detailProgress').textContent = loan.progress + '%';
+    document.getElementById('detailStatus').textContent = '● ' + loan.status;
+    document.getElementById('detailStatus').style.color = loan.status === 'Active' ? '#6ee7b7' : loan.status === 'Pending' ? '#fcd34d' : '#8a9bb8';
+    document.getElementById('loanDetailModal').classList.add('active');
+  }
+
+  function openStatDetail(type) {
+    const modal = document.getElementById('statDetailModal');
+    const title = document.getElementById('statDetailTitle');
+    const content = document.getElementById('statDetailContent');
+    const statData = {
+      'loans-created': { icon: 'fa-file-invoice', color: '#2dd4bf', title: 'Loans Created', total: 4, items: [{ name: 'DeFi Yield Farming', value: '12,500 BRC', status: 'Active' }, { name: 'NFT Collection Expansion', value: '8,200 BRC', status: 'Active' }, { name: 'Business Working Capital', value: '25,000 BRC', status: 'Pending' }, { name: 'Real Estate Tokenization', value: '50,000 BRC', status: 'Active' }] },
+      'pending-requests': { icon: 'fa-hourglass-half', color: '#fcd34d', title: 'Pending Requests', total: 2, items: [{ name: 'Business Working Capital', value: '25,000 BRC', status: 'Pending', user: 'Roberto L.' }, { name: 'Crypto Startup Fund', value: '15,000 BRC', status: 'Pending', user: 'Marina S.' }] },
+      'loans-paid': { icon: 'fa-check-circle', color: '#6ee7b7', title: 'Loans Paid', total: 7, items: [{ name: 'Crypto Education Platform', value: '3,500 BRC', status: 'Paid', user: 'Lucas M.' }, { name: 'E-commerce Expansion', value: '8,000 BRC', status: 'Paid', user: 'Juliana R.' }, { name: 'Personal Investment', value: '2,200 BRC', status: 'Paid', user: 'André C.' }] },
+      'active-users': { icon: 'fa-user-check', color: '#a78bfa', title: 'Active Users', total: 142, items: [{ name: 'Total Registered', value: '1,847 users' }, { name: 'Active This Month', value: '142 users' }, { name: 'New This Week', value: '23 users' }, { name: 'Top Borrower', value: 'Ana P. - 50,000 BRC' }] }
+    };
+    const data = statData[type];
+    if (!data) return;
+    title.innerHTML = `<i class="fas ${data.icon}" style="color:${data.color};"></i> ${data.title} (${data.total})`;
+    let html = `<p style="text-align:center;font-size:0.65rem;color:#8a9bb8;margin-bottom:1rem;">Total: <strong style="color:#f0f4ff;">${data.total}</strong></p>`;
+    data.items.forEach(item => {
+      html += `<div class="stat-detail-item"><div class="stat-icon"><i class="fas ${data.icon}" style="color:${data.color};"></i></div><div class="stat-info"><div class="stat-name">${item.name}</div><div class="stat-desc">${item.user || item.status || ''}</div></div><div class="stat-value">${item.value}</div></div>`;
+    });
+    content.innerHTML = html;
+    modal.classList.add('active');
+  }
+
+  function createLoan() {
+    const title = document.getElementById('loanTitle').value.trim();
+    const purpose = document.getElementById('loanPurpose').value.trim();
+    const rate = parseFloat(document.getElementById('loanRate').value);
+    const amount = parseFloat(document.getElementById('loanAmount').value);
+    if (!title || !purpose || isNaN(rate) || isNaN(amount) || amount <= 0) {
+      alert('Please fill in all fields correctly.');
+      return;
+    }
+    loansData.push({ id: loanCounter++, title, purpose, amount, rate, term: '3 months', borrower: 'Alex Rivera (You)', status: 'Pending', progress: 0 });
+    alert('✅ Loan "' + title + '" created successfully!');
+    renderLoanList();
+    document.getElementById('loanTitle').value = '';
+    document.getElementById('loanPurpose').value = '';
+    document.getElementById('loanRate').value = '';
+    document.getElementById('loanAmount').value = '';
+  }
+
+  function createTurboLoan() {
+    const title = document.getElementById('turboTitle').value.trim();
+    const purpose = document.getElementById('turboPurpose').value.trim();
+    const amount = parseFloat(document.getElementById('turboAmount').value);
+    const term = document.getElementById('turboTerm').value;
+    if (!title || !purpose || isNaN(amount) || amount <= 0) {
+      alert('Please fill in all fields correctly.');
+      return;
+    }
+    loansData.push({ id: loanCounter++, title: '⚡ ' + title, purpose: purpose + ' (Turbo Loan)', amount, rate: 0, term, borrower: 'Alex Rivera (You)', status: 'Active', progress: 10 });
+    alert('⚡ Turbo Loan "' + title + '" created successfully!');
+    renderLoanList();
+    document.getElementById('turboTitle').value = '';
+    document.getElementById('turboPurpose').value = '';
+    document.getElementById('turboAmount').value = '';
+  }
+
+  function claimAirdrop() {
+    const wallet = document.getElementById('airdropWallet').value.trim();
+    if (!wallet || wallet === '0x... or BRC address') {
+      alert('Please enter your BRC wallet address.');
+      return;
+    }
+    alert('🎉 Airdrop claimed successfully! 250 BRC sent to ' + wallet);
+  }
+
+  function createStaking() {
+    const amount = parseFloat(document.getElementById('stakeAmount').value);
+    const period = document.getElementById('stakePeriod').value;
+    if (isNaN(amount) || amount < 100) {
+      alert('Minimum staking amount is 100 BRC.');
+      return;
+    }
+    alert('🔒 Staking created! ' + amount + ' BRC locked for ' + period);
+  }
+
+  // ============ NAVEGAÇÃO ============
+  const menuItems = document.querySelectorAll('.sidebar-menu li[data-page]');
+  const pages = {
+    overview: document.getElementById('page-overview'),
+    'create-loan': document.getElementById('page-create-loan'),
+    'turbo-loan': document.getElementById('page-turbo-loan'),
+    airdrop: document.getElementById('page-airdrop'),
+    staking: document.getElementById('page-staking'),
+    kyc: document.getElementById('page-kyc'),
+    config: document.getElementById('page-config'),
+    wallet: document.getElementById('page-wallet'),
+    security: document.getElementById('page-security'),
+    profile: document.getElementById('page-profile'),
+    history: document.getElementById('page-history'),
+    referrals: document.getElementById('page-referrals')
+  };
+
+  function showPage(pageId) {
+    Object.values(pages).forEach(p => { if (p) p.style.display = 'none'; });
+    if (pages[pageId]) pages[pageId].style.display = 'block';
+    menuItems.forEach(li => li.classList.remove('active'));
+    document.querySelector(`.sidebar-menu li[data-page="${pageId}"]`)?.classList.add('active');
+    if (pageId === 'overview') renderLoanList();
+    if (pageId === 'profile') {
+      document.getElementById('profileFirstName').value = userProfile.firstName;
+      document.getElementById('profileLastName').value = userProfile.lastName;
+      document.getElementById('profileEmail').value = userProfile.email;
+      if (userProfile.avatar) {
+        const preview = document.getElementById('profileAvatarPreview');
+        preview.innerHTML = `<img src="${userProfile.avatar}" alt="Avatar" /><div class="overlay"><i class="fas fa-camera"></i></div>`;
+      }
+    }
+  }
+
+  menuItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      const page = this.dataset.page;
+      if (page) showPage(page);
+    });
+  });
+
+  // ============ LOGOUT ============
+  document.getElementById('logoutSidebar').addEventListener('click', function() {
+    document.getElementById('logoutConfirmModal').classList.add('active');
+  });
+
+  document.getElementById('logoutConfirmYes').addEventListener('click', function() {
+    document.getElementById('logoutConfirmModal').classList.remove('active');
+    document.getElementById('dashboard').classList.remove('active');
+    document.getElementById('mainContent').classList.remove('hidden');
+    document.getElementById('mainContent').style.display = 'block';
+  });
+
+  document.getElementById('logoutConfirmNo').addEventListener('click', function() {
+    document.getElementById('logoutConfirmModal').classList.remove('active');
+  });
+
+  document.getElementById('logoutConfirmModal').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('active');
+  });
+
+  // ============ AUTH ============
   (function() {
     const mainContent = document.getElementById('mainContent');
     const dashboard = document.getElementById('dashboard');
@@ -1026,10 +1920,6 @@
     const signupTestBtn = document.getElementById('signupTestBtn');
     const authForm = document.getElementById('authFormContainer');
     const signupForm = document.getElementById('signupFormContainer');
-    const logoutBtn = document.getElementById('logoutBtn');
-    const logoutModal = document.getElementById('logoutModal');
-    const logoutYes = document.getElementById('logoutYes');
-    const logoutNo = document.getElementById('logoutNo');
 
     function openAuthModal(mode) {
       authModal.classList.add('active');
@@ -1050,7 +1940,8 @@
       closeAuthModal();
       mainContent.style.display = 'none';
       dashboard.classList.add('active');
-      updateRankUI();
+      showPage('overview');
+      renderLoanList();
     });
 
     signupTestBtn.addEventListener('click', function(e) {
@@ -1063,110 +1954,38 @@
       closeAuthModal();
       mainContent.style.display = 'none';
       dashboard.classList.add('active');
-      updateRankUI();
+      showPage('overview');
+      renderLoanList();
     });
 
-    logoutBtn.addEventListener('click', () => { logoutModal.classList.add('active'); });
-    logoutYes.addEventListener('click', () => {
-      logoutModal.classList.remove('active');
-      dashboard.classList.remove('active');
-      mainContent.style.display = 'block';
-    });
-    logoutNo.addEventListener('click', () => { logoutModal.classList.remove('active'); });
-    logoutModal.addEventListener('click', (e) => {
-      if (e.target === logoutModal) logoutModal.classList.remove('active');
-    });
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         if (authModal.classList.contains('active')) closeAuthModal();
-        if (logoutModal.classList.contains('active')) logoutModal.classList.remove('active');
+        if (document.getElementById('logoutConfirmModal').classList.contains('active')) 
+          document.getElementById('logoutConfirmModal').classList.remove('active');
+        if (document.getElementById('loanDetailModal').classList.contains('active'))
+          document.getElementById('loanDetailModal').classList.remove('active');
+        if (document.getElementById('statDetailModal').classList.contains('active'))
+          document.getElementById('statDetailModal').classList.remove('active');
+        if (document.getElementById('investModal').classList.contains('active'))
+          document.getElementById('investModal').classList.remove('active');
         if (document.getElementById('sendModal').classList.contains('active')) 
           document.getElementById('sendModal').classList.remove('active');
       }
     });
   })();
 
-  // Translation function
   function translatePage(lang) {
-    const dict = {
-      en: {
-        hero: "Achieve Your Projects with a <span>Bradicoin Loan</span>.<br><span style='font-size:1.4rem;background:none;color:#a5f3fc;text-shadow:0 0 40px rgba(0,255,255,0.15);'>You Don't Need to Have Bradicoin to Get Started.</span>",
-        sub: "At Bradicoin Loan, we believe that access to the financial future should be simple and for everyone. Unlike other platforms, you don't need to already own Bradicoin to apply for a loan. Our innovative methodology allows you to use different forms of collateral and receive the loan value directly in Bradicoin. Sign up now, choose the amount you want, and receive your Bradicoins in just a few minutes. It's fast, secure, transparent, and made for you.",
-        cta: "I WANT TO APPLY FOR MY LOAN NOW",
-        s2: "Why Have Thousands of People Already Chosen Bradicoin Loan?",
-        s3: "The Differential That Makes Bradicoin Loan the Best Choice",
-        s4: "How to Apply for a Loan in Bradicoin — Complete Step-by-Step Guide",
-        s5: "Advantages That Make a Difference in Your Financial Life",
-        s6: "The Bradicoin Loan is for You If...",
-        s7: "Frequently Asked Questions about Bradicoin Loan",
-        s8: "What Our Customers Are Saying",
-        s9: "Bradicoin Loan Process Summary",
-        final: "Ready to Turn Your Plans into Reality?"
-      },
-      pt: {
-        hero: "Realize seus projetos com um <span>Empréstimo Bradicoin</span>.<br><span style='font-size:1.4rem;background:none;color:#a5f3fc;text-shadow:0 0 40px rgba(0,255,255,0.15);'>Você não precisa ter Bradicoin para começar.</span>",
-        sub: "No Bradicoin Loan, acreditamos que o acesso ao futuro financeiro deve ser simples e para todos. Ao contrário de outras plataformas, você não precisa já possuir Bradicoin para solicitar um empréstimo. Nossa metodologia inovadora permite que você use diferentes formas de garantia e receba o valor do empréstimo diretamente em Bradicoin. Cadastre-se agora, escolha o valor que deseja e receba seus Bradicoins em poucos minutos. É rápido, seguro, transparente e feito para você.",
-        cta: "QUERO SOLICITAR MEU EMPRÉSTIMO AGORA",
-        s2: "Por que milhares de pessoas já escolheram o Bradicoin Loan?",
-        s3: "O diferencial que torna o Bradicoin Loan a melhor escolha",
-        s4: "Como solicitar um empréstimo em Bradicoin — Guia passo a passo completo",
-        s5: "Vantagens que fazem a diferença na sua vida financeira",
-        s6: "O Bradicoin Loan é para você se...",
-        s7: "Perguntas Frequentes sobre o Bradicoin Loan",
-        s8: "O que nossos clientes estão dizendo",
-        s9: "Resumo do Processo Bradicoin Loan",
-        final: "Pronto para transformar seus planos em realidade?"
-      },
-      es: {
-        hero: "Logra tus proyectos con un <span>Préstamo Bradicoin</span>.<br><span style='font-size:1.4rem;background:none;color:#a5f3fc;text-shadow:0 0 40px rgba(0,255,255,0.15);'>No necesitas tener Bradicoin para empezar.</span>",
-        sub: "En Bradicoin Loan, creemos que el acceso al futuro financiero debe ser simple y para todos. A diferencia de otras plataformas, no necesitas ya poseer Bradicoin para solicitar un préstamo. Nuestra metodología innovadora te permite usar diferentes formas de garantía y recibir el valor del préstamo directamente en Bradicoin. Regístrate ahora, elige la cantidad que deseas y recibe tus Bradicoins en pocos minutos. Es rápido, seguro, transparente y hecho para ti.",
-        cta: "QUIERO SOLICITAR MI PRÉSTAMO AHORA",
-        s2: "¿Por qué miles de personas ya eligieron Bradicoin Loan?",
-        s3: "El diferencial que hace de Bradicoin Loan la mejor opción",
-        s4: "Cómo solicitar un préstamo en Bradicoin — Guía paso a paso completa",
-        s5: "Ventajas que marcan la diferencia en tu vida financiera",
-        s6: "Bradicoin Loan es para ti si...",
-        s7: "Preguntas Frecuentes sobre Bradicoin Loan",
-        s8: "Lo que dicen nuestros clientes",
-        s9: "Resumen del Proceso Bradicoin Loan",
-        final: "¿Listo para convertir tus planes en realidad?"
-      },
-      ar: {
-        hero: "حقق مشاريعك مع <span>قرض براديكوين</span>.<br><span style='font-size:1.4rem;background:none;color:#a5f3fc;text-shadow:0 0 40px rgba(0,255,255,0.15);'>لا تحتاج إلى امتلاك براديكوين للبدء.</span>",
-        sub: "في براديكوين لون، نؤمن بأن الوصول إلى المستقبل المالي يجب أن يكون بسيطًا ومتاحًا للجميع. على عكس المنصات الأخرى، لا تحتاج إلى امتلاك براديكوين مسبقًا لتقديم طلب قرض. تتيح لك منهجيتنا المبتكرة استخدام أشكال مختلفة من الضمانات واستلام قيمة القرض مباشرةً بالبراديكوين. سجل الآن، اختر المبلغ الذي تريده، واستلم براديكوين في دقائق. إنه سريع، آمن، شفاف، ومصمم من أجلك.",
-        cta: "أريد التقدم بطلب القرض الآن",
-        s2: "لماذا اختار الآلاف من الناس بالفعل براديكوين لون؟",
-        s3: "الفارق الذي يجعل براديكوين لون الخيار الأفضل",
-        s4: "كيفية التقدم بطلب قرض بالبراديكوين — دليل خطوة بخطوة كامل",
-        s5: "مزايا تحدث فرقًا في حياتك المالية",
-        s6: "براديكوين لون مناسب لك إذا...",
-        s7: "الأسئلة الشائعة حول براديكوين لون",
-        s8: "ماذا يقول عملاؤنا",
-        s9: "ملخص عملية براديكوين لون",
-        final: "هل أنت مستعد لتحويل خططك إلى واقع؟"
-      }
-    };
-    const t = dict[lang] || dict.en;
-    const hero = document.querySelector('.welcome-title');
-    if (hero) hero.innerHTML = `<i class="fas fa-hand-holding-usd" style="color: #67e8f9; margin-right: 12px;"></i> ${t.hero}`;
-    const sub = document.querySelector('.welcome-sub');
-    if (sub) sub.innerHTML = `<i class="fas fa-robot"></i> ${t.sub}`;
-    const cta = document.querySelector('.btn-cta');
-    if (cta) cta.innerHTML = `<i class="fas fa-rocket"></i> ${t.cta}`;
-    const titles = document.querySelectorAll('.section-title');
-    if (titles.length >= 8) {
-      titles[0].innerHTML = `<i class="fas fa-question-circle"></i> ${t.s2}`;
-      titles[1].innerHTML = `<i class="fas fa-fire" style="color: #f472b6;"></i> ${t.s3}`;
-      titles[2].innerHTML = `<i class="fas fa-list-ol"></i> ${t.s4}`;
-      titles[3].innerHTML = `<i class="fas fa-star" style="color: #fcd34d;"></i> ${t.s5}`;
-      titles[4].innerHTML = `<i class="fas fa-users"></i> ${t.s6}`;
-      titles[5].innerHTML = `<i class="fas fa-question-circle"></i> ${t.s7}`;
-      titles[6].innerHTML = `<i class="fas fa-comment-dots"></i> ${t.s8}`;
-      titles[7].innerHTML = `<i class="fas fa-project-diagram"></i> ${t.s9}`;
-      const finalTitle = document.querySelector('.main-section:last-child .section-title');
-      if (finalTitle) finalTitle.innerHTML = `<i class="fas fa-rocket" style="color: #2dd4bf;"></i> ${t.final}`;
-    }
+    const dict = { en: { brand: 'BRADI·LOAN' }, pt: { brand: 'BRADI·LOAN' }, es: { brand: 'BRADI·LOAN' }, ar: { brand: 'برادي·لون' } };
+    const selected = dict[lang] || dict.en;
+    document.querySelector('.brand-orbit').innerHTML = `<i class="fas fa-coins"></i> ${selected.brand}`;
   }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    renderLoanList();
+    updateSidebarAvatar();
+    updateSidebarName();
+  });
 </script>
 </body>
 </html>
